@@ -12,7 +12,7 @@ function buildIt(dom){
     var userClicked = dom.value; 
 
     // Add user choices to array
-    choices.push(userClicked.toString());
+    choices.push(userClicked);
 
     var menu;  // menu
     var options; // options
@@ -25,11 +25,12 @@ function buildIt(dom){
     // check that there's a value
     if(userClicked != undefined){
 
-        // Check if user chose the '-- Select -- option'
+        // Check if user chose the '-- Select --' option
         if(userClicked === "-- Select --"){
-            return "";
+            return;
         }
-        if(data[userClicked] == undefined){ // if no more items
+        if(data[userClicked] == undefined){ // No more items!
+            
             // Display choices
             // NOTE: i is set to 1 initially to skip the 'init' from showing
             // for(var i = 1; i < choices.length; i++){
