@@ -4,16 +4,19 @@
 * Function that builds the selection menu and options
 */
 
+var choices = []; // global array to hold choices
+
+
 function buildIt(dom){
     // value of chosen choice
     var userClicked = dom.value; 
 
+    // Add user choices to array
+    choices.push(userClicked.toString());
+
     var menu;  // menu
-    var options; // option
-
-    // track all choices
-    var choices = choices + dom;
-
+    var options; // options
+    
     // -- Select -- preOption
     var preOption = document.createElement('option');
     preOption.appendChild(document.createTextNode("-- Select --"));
@@ -27,6 +30,12 @@ function buildIt(dom){
             return "";
         }
         if(data[userClicked] == undefined){ // if no more items
+            // Display choices
+            // NOTE: i is set to 1 initially to skip the 'init' from showing
+            // for(var i = 1; i < choices.length; i++){
+            //     console.log(choices[i]);
+            // }
+
             // Make form
             // Show options
             var form = document.createElement('form'); // create form
