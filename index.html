@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Brandon Mok - Vehicle Builder</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <script src="./js/data.js"></script> <!-- Data Source -->
+        <script src="./js/buildIt.js"></script><!-- BuildIt function  -->
+        <script src="./js/validation.js"></script><!-- Validation function-->
+        <script> 
+            // Check for outdated browsers
+            if(!document.getElementById){
+                window.location = legacy.html;
+            }
+
+            // Need an option element to be sent
+            // Couldn't only send 'init' text
+            function start(){
+                var test = document.createElement('option');
+                test.appendChild(document.createTextNode("init"));
+                buildIt(test);
+            }
+        </script>
+    </head>
+    <body onload = start();>
+        <header>
+            <h1 id="title">Vehicle Builder</h1>
+        </header>
+        <div id="forms">
+            
+        </div>
+    </body>
+</html>
