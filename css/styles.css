@@ -24,21 +24,41 @@ header h1{
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.596);
 }
 
-/* Div where all form elements are */
-#forms{
-    background-color: white;
-    border-radius: .5em;
-    padding: 1em;
-    position: relative;
-    margin: 7em;
-    margin-top: 4em; 
-    height: 30em
+/** 
+* Container that holds two divs - forms & display 
+*/
+.container{
+    display: flex;
+    margin: 5em;
 }
+
+/* divs for the forms and the final display */
+#forms, #finalDisplay{
+    flex: 1 1 50%;
+    background-color: white;
+    padding: 1em;
+    height: 25em;
+    /* border-radius: .5em; */
+}
+
 
 /** Select menus */
 select{
     display: block;
-    font-size: 1rem;
+    font-size: 1.1rem;
     width: 6.5em;
 }
 
+
+
+/**
+* Media Queries
+*/
+@media screen and (max-width: 800px){
+    .container{
+        flex-wrap: wrap;
+    }
+    #finalDisplay, #forms{
+        flex-direction: column;
+    }
+}
