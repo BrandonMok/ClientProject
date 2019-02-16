@@ -6,11 +6,12 @@
 function buildFinalForm(){
         var finalForm = document.createElement('form'); // create form
             finalForm.setAttribute('method','POST');         // give form method POST
-            finalForm.setAttribute('action','index.html');   // redirect user after form submission
+            // finalForm.setAttribute('action','index.html');   // redirect user after form submission
             finalForm.setAttribute('id','myFinalForm');
             finalForm.setAttribute('onsubmit', 'return validation();');  // call validation method
 
 
+        // Text/labels next to the fields
         var fNameText = document.createTextNode("First Name ");
         var lNameText = document.createTextNode("Last Name ");
         var emailText = document.createTextNode("Email ");
@@ -34,6 +35,7 @@ function buildFinalForm(){
         var submit = document.createElement('input');
             submit.setAttribute("type","submit");
             submit.setAttribute("value","submit");
+
 
     
         // Showing forms & appending options

@@ -29,7 +29,7 @@ header h1{
 */
 .container{
     display: flex;
-    margin: 5em;
+    margin: 4em 5em;
 }
 
 /* divs for the forms and the final display */
@@ -38,8 +38,14 @@ header h1{
     background-color: white;
     padding: 1em;
     height: 35em;
-    /* border-radius: .5em; */
 }
+#forms{ 
+    border-radius: 1em 0 0 1em;
+}
+#finalDisplay{
+    border-radius: 0 1em 1em 0;
+}
+
 
 
 /** Select menus */
@@ -83,10 +89,19 @@ form input{
 * Media Queries
 */
 @media screen and (max-width: 800px){
+    /* Handle flex layout */
     .container{
         flex-wrap: wrap;
     }
-    #finalDisplay, #forms{
+    #forms, #finalDisplay{
         flex-direction: column;
+    }
+    #forms{
+        border-radius: 1em 1em 0 0;
+        width: 50%;
+    }
+    #finalDisplay{
+        width: 50%;
+        border-radius: 0 0 1em 1em;
     }
 }
