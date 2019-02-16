@@ -4,6 +4,7 @@
 */
 
 function buildFinalForm(){
+        // Form
         var finalForm = document.createElement('form'); // create form
             finalForm.setAttribute('method','POST');         // give form method POST
             // finalForm.setAttribute('action','index.html');   // redirect user after form submission
@@ -17,34 +18,39 @@ function buildFinalForm(){
         var emailText = document.createTextNode("Email ");
 
 
+        // Input
         var inputFName = document.createElement('input');
             inputFName.setAttribute("type","text");
             inputFName.setAttribute("id","fName");
             inputFName.setAttribute("name", "fName");
 
+        // Last Name
         var inputLName = document.createElement('input');
             inputLName.setAttribute("type","text");
             inputLName.setAttribute("id","lName");
             inputLName.setAttribute("name", "lName");
 
+        // Email
         var inputEmail = document.createElement('input');
             inputEmail.setAttribute("type","email");
             inputEmail.setAttribute("id","email");
             inputEmail.setAttribute("name", "email");
             
+        // Submit
         var submit = document.createElement('input');
             submit.setAttribute("type","submit");
             submit.setAttribute("value","submit");
+            submit.setAttribute("id","submitBtn")
 
 
     
         // Showing forms & appending options
-        document.getElementById('forms').appendChild(finalForm); 
-        document.getElementById('myFinalForm').appendChild(fNameText);  
-        document.getElementById('myFinalForm').appendChild(inputFName); 
-        document.getElementById('myFinalForm').appendChild(lNameText);   
-        document.getElementById('myFinalForm').appendChild(inputLName);
-        document.getElementById('myFinalForm').appendChild(emailText);  
-        document.getElementById('myFinalForm').appendChild(inputEmail);
-        document.getElementById('myFinalForm').appendChild(submit);
+        $('forms').appendChild(finalForm); 
+        $('myFinalForm').appendChild(fNameText);  
+        $('myFinalForm').appendChild(inputFName); 
+        $('myFinalForm').appendChild(lNameText);   
+        $('myFinalForm').appendChild(inputLName);
+        $('myFinalForm').appendChild(emailText);  
+        $('myFinalForm').appendChild(inputEmail);
+        $('myFinalForm').appendChild(submit);
 }

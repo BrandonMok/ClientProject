@@ -6,11 +6,19 @@
 function validation(){
 
     // Check for empty fields
-    if(document.getElementById('fName') == ''){
-        document.getElementById('fName').style.backgroundColor = "red";
+    if($('fName').value == ''){
+        $('fName').style.backgroundColor = "red";
+        return false;
+    }
+    if($('lName').value == ''){
+        $('lName').style.backgroundColor = "red";
+        return false;
+    }
+    if($('email').value == ''){
+        $('email').style.backgroundColor = "red";
         return false;
     }
 
-    
+
     return true;
 }

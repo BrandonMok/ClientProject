@@ -21,13 +21,17 @@
             var test = document.createElement('option');
             test.appendChild(document.createTextNode("init"));
 
+            
+            // ID
+            function $(id){
+                return document.getElementById(id);
+            }
         </script>
     </head>
     <body onload="buildIt(test);">
         <header>
             <h1 id="title">Vehicle Builder</h1>
         </header>
-
 
         <div class="container">
             <div id="forms"></div>
