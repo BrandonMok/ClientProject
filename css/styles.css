@@ -37,7 +37,7 @@ header h1{
     flex: 1 1 50%;
     background-color: white;
     padding: 1em;
-    height: 25em;
+    height: 35em;
     /* border-radius: .5em; */
 }
 
@@ -46,10 +46,31 @@ header h1{
 select{
     display: block;
     font-size: 1.1rem;
-    width: 6.5em;
     margin-bottom: 1.5em;
     animation: fade 2s;
+    width: 6.5em;
 }
+
+
+/** 
+* Only have one form tag - Final Form
+*/
+form{
+    margin-top: 3em;
+    margin-left: 1.5em;
+    padding: 2em;
+    border-radius: 1em;
+    background-color: #d8d8d8;
+}
+
+form input{
+    margin-bottom: 1em;
+    display: block;
+}
+
+
+
+
 
 /* Fade animation */
 @keyframes fade{

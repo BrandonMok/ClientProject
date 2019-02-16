@@ -7,8 +7,14 @@ function buildFinalForm(){
         var finalForm = document.createElement('form'); // create form
             finalForm.setAttribute('method','POST');         // give form method POST
             finalForm.setAttribute('action','index.html');   // redirect user after form submission
-            finalForm.setAttribute('id','myForm');
+            finalForm.setAttribute('id','myFinalForm');
             finalForm.setAttribute('onsubmit', 'return validation();');  // call validation method
+
+
+        var fNameText = document.createTextNode("First Name ");
+        var lNameText = document.createTextNode("Last Name ");
+        var emailText = document.createTextNode("Email ");
+
 
         var inputFName = document.createElement('input');
             inputFName.setAttribute("type","text");
@@ -29,12 +35,14 @@ function buildFinalForm(){
             submit.setAttribute("type","submit");
             submit.setAttribute("value","submit");
 
-
     
         // Showing forms & appending options
         document.getElementById('forms').appendChild(finalForm); 
-        document.getElementById('myForm').appendChild(inputFName);  
-        document.getElementById('myForm').appendChild(inputLName);
-        document.getElementById('myForm').appendChild(inputEmail);
-        document.getElementById('myForm').appendChild(submit);
+        document.getElementById('myFinalForm').appendChild(fNameText);  
+        document.getElementById('myFinalForm').appendChild(inputFName); 
+        document.getElementById('myFinalForm').appendChild(lNameText);   
+        document.getElementById('myFinalForm').appendChild(inputLName);
+        document.getElementById('myFinalForm').appendChild(emailText);  
+        document.getElementById('myFinalForm').appendChild(inputEmail);
+        document.getElementById('myFinalForm').appendChild(submit);
 }

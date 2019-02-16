@@ -31,13 +31,13 @@ function buildIt(dom){
             return;
         }
         if(data[userClicked] == undefined){ // No more items!
-            // Display choices
+            // Display choices - Place in displayDiv
             // NOTE: i is set to 1 initially to skip the 'init' from showing
             // for(var i = 1; i < choices.length; i++){
             //     console.log(choices[i]);
             // }
 
-            buildFinalForm();
+            buildFinalForm(); // builds the final form for gathering user information
         }
         else{ 
             // Show Question first
