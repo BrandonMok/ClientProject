@@ -30,6 +30,7 @@ header h1{
 .container{
     display: flex;
     margin: 4em 5em;
+    height: 40em;    /* If not here, then can have each individual show */
 }
 
 /* divs for the forms and the final display */
@@ -37,7 +38,6 @@ header h1{
     flex: 1 1 50%;
     background-color: white;
     padding: 1em;
-    height: 35em;
 }
 #forms{ 
     border-radius: 1em 0 0 1em;
