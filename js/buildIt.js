@@ -16,7 +16,7 @@ function buildIt(dom){
 
     var menu;  // menu
     var options; // options
-    var question;
+    var question; // questions 
     
     // -- Select -- preOption
     var preOption = document.createElement('option');
@@ -31,40 +31,15 @@ function buildIt(dom){
             return;
         }
         if(data[userClicked] == undefined){ // No more items!
-            
             // Display choices
             // NOTE: i is set to 1 initially to skip the 'init' from showing
             // for(var i = 1; i < choices.length; i++){
             //     console.log(choices[i]);
             // }
 
-            // Make form
-            // Show options
-            var form = document.createElement('form'); // create form
-                form.setAttribute('method','POST');         // give form method POST
-                form.setAttribute('action','index.html');   // redirect user after form submission
-                form.setAttribute('id','myForm');
-                form.setAttribute('onsubmit', 'return validation();');  // call validation method
-
-            var input = document.createElement('input');
-                input.setAttribute("type","text");
-                input.setAttribute("id","fName");
-                input.setAttribute("name", "fName");
-                
-            // loop to make form?
-
-            var submit = document.createElement('input');
-            submit.setAttribute("type","submit");
-            submit.setAttribute("value","submit");
-
-
-        
-            document.getElementById('forms').appendChild(form);
-
-            document.getElementById('myForm').appendChild(input);
-
+            buildFinalForm();
         }
-        else{
+        else{ 
             // Show Question first
             question = document.createTextNode(qData[userClicked][0]);
             document.getElementById('forms').appendChild(question);
@@ -76,7 +51,6 @@ function buildIt(dom){
 
             // Menu adding the  -- Select -- option
             menu.appendChild(preOption);
-            
 
             // Loop that makes options, loads option data, and puts it in menu
             for(var i = 0; i < data[userClicked].length; i++){

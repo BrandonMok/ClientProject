@@ -7,27 +7,23 @@
         <link rel="stylesheet" href="./css/styles.css">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
         <script src="./js/data.js"></script> <!-- Data Source -->
+        <script src="./js/questionData.js"></script><!-- Data Source for questions -->
         <script src="./js/buildIt.js"></script><!-- BuildIt function  -->
-        <script src="./js/buildForm.js"></script><!-- Form Build function-->
+        <script src="./js/buildFinalForm.js"></script><!-- Form Build function-->
         <script src="./js/validation.js"></script><!-- Validation function-->
-
-        <script src="./js/questionData.js"></script>
         <script> 
             // Check for outdated browsers
             if(!document.getElementById){
                 window.location = legacy.html;
             }
 
-            // Need an option element to be sent
-            // Couldn't only send 'init' text
-            function start(){
-                var test = document.createElement('option');
-                test.appendChild(document.createTextNode("init"));
-                buildIt(test);
-            }
+            // Need an option to be sent to start
+            var test = document.createElement('option');
+            test.appendChild(document.createTextNode("init"));
+
         </script>
     </head>
-    <body onload=start()>
+    <body onload="buildIt(test);">
         <header>
             <h1 id="title">Vehicle Builder</h1>
         </header>

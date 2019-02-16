@@ -12,4 +12,7 @@ qData["hatchback"]=["Choose a seat material"];
 qData["truck"]=["Choose a truck type"];
 qData["pickup"]=["Choose a fuel type"];
 qData["gas"]=["How many seats?"];
-qData["diseal"]=["What size mirrors?"];
+qData["diesal"]=["What size mirrors?"];
+
+qData["van"]=["Choose a make"];
+

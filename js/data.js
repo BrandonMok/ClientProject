@@ -11,4 +11,5 @@ data['hatchback']=['cloth','leather'];
 data['truck']=['van','pickup'];
 data['pickup']=['gas','diesal'];
 data['gas']=['2','4'];
-data['diesal']=["large","medium","small"];
+data['diesal']=['large','medium','small'];
+data['van']=['minivan','camper']; 

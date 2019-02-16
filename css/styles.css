@@ -48,8 +48,14 @@ select{
     font-size: 1.1rem;
     width: 6.5em;
     margin-bottom: 1.5em;
+    animation: fade 2s;
 }
 
+/* Fade animation */
+@keyframes fade{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
 
 
 /**
