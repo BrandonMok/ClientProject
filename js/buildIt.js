@@ -16,6 +16,7 @@ function buildIt(dom){
 
     var menu;  // menu
     var options; // options
+    var question;
     
     // -- Select -- preOption
     var preOption = document.createElement('option');
@@ -64,7 +65,9 @@ function buildIt(dom){
 
         }
         else{
-            // switch to show different 
+            // Show Question first
+            question = document.createTextNode(qData[userClicked][0]);
+            document.getElementById('forms').appendChild(question);
 
             // Menu creation
             menu = document.createElement('select');
