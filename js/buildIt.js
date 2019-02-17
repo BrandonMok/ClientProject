@@ -14,6 +14,7 @@ function buildIt(dom){
     // Add user choices to array
     choices.push(userClicked);
 
+
     var menu;  // menu
     var options; // options
     var question; // questions 
@@ -28,21 +29,25 @@ function buildIt(dom){
 
         // Check if user chose the '-- Select --' option
         if(userClicked === "-- Select --"){
-            return;
+            return; // return nothing
         }
         if(data[userClicked] == undefined){ // No more items!
 
+            // Header
             var finalDispHeader = document.createElement('h1');
             finalDispHeader.appendChild(document.createTextNode("Your selections:"));
             $('finalDisplay').appendChild(finalDispHeader);
 
-            var selectedChoices;
+
+            // var used to create 'p' tags to hold choices
+            var selectedChoices; 
+
+
             // Display choices - Place in displayDiv
             // NOTE: i is set to 1 initially to skip the 'init' from showing
             for(var i = 1; i < choices.length; i++){
                 selectedChoices = document.createElement('p');
                 selectedChoices.appendChild(document.createTextNode(choices[i]));
-                console.log(choices[i]);
                 $('finalDisplay').appendChild(selectedChoices);
             }
 
@@ -51,12 +56,12 @@ function buildIt(dom){
         else{ 
             // Show Question first
             question = document.createTextNode(qData[userClicked][0]);
-            document.getElementById('forms').appendChild(question);
+            $('forms').appendChild(question);
 
             // Menu creation
             menu = document.createElement('select');
             menu.setAttribute('onchange','buildIt(this);');
-            document.getElementById('forms').appendChild(menu); // show menu to screen
+            $('forms').appendChild(menu); // show menu to screen
 
             // Menu adding the  -- Select -- option
             menu.appendChild(preOption);
