@@ -19,6 +19,5 @@ function validation(){
         return false;
     }
 
-
     return true;
 }
