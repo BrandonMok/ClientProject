@@ -9,16 +9,11 @@ var choices = []; // global array to hold choices
 
 function buildIt(dom){
 
-    var menu;  // menu
-    var options; // options
-    var question; // questions 
-
     var hold; // hold used to hold dom
     var holdQ;  // Quetion hold that does same as hold, but for Questions data
 
     // Array used to hold entered choices
     choices.push(dom.value);
-
 
     // First check for outdated browsers
     if(!document.getElementById){
@@ -26,7 +21,7 @@ function buildIt(dom){
     }else{
 
 
-        // Check for the initial 'init'
+        // Check for the initial 'init' - first part ran only once
         if(dom == "init"){
             hold = data["init"];    // get the data for using the key
             holdQ = qData["init"];  // get the question data using the key
@@ -63,23 +58,24 @@ function buildIt(dom){
         }
 
         
-        // Check if there ARE options available 
+
+        // Check if there ARE options available and then make the Select menu and options
         if(hold != undefined){
 
             // Show Question first
-            question = document.createTextNode(holdQ[0]);
+            var question = document.createTextNode(holdQ[0]);
             $('forms').appendChild(question);
 
-            
+
             // Menu creation
-            menu = document.createElement('select');
+            var menu = document.createElement('select');
             menu.setAttribute('onchange','buildIt(this);');
             $('forms').appendChild(menu); // show menu to screen
 
 
             // Loop that makes options, loads option data, and puts it in menu
             for(var i = 0; i < hold.length; i++){
-                options = document.createElement('option');
+                var options = document.createElement('option');
                 options.setAttribute('name', hold[i]);
                 options.setAttribute('value', hold[i]);
                 options.appendChild(document.createTextNode(hold[i]));
