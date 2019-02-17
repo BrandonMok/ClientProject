@@ -5,30 +5,13 @@
         <title>Brandon Mok - Vehicle Builder</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./css/styles.css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
         <script src="./js/data.js"></script> <!-- Data Source -->
         <script src="./js/questionData.js"></script><!-- Data Source for questions -->
         <script src="./js/buildIt.js"></script><!-- BuildIt function  -->
         <script src="./js/buildFinalForm.js"></script><!-- Form Build function-->
         <script src="./js/validation.js"></script><!-- Validation function-->
-        <script> 
-            // Check for outdated browsers
-            if(!document.getElementById){
-                window.location = "http://outdatedbrowser.com";
-            }
-
-            // Need an option to be sent to start
-            var test = document.createElement('option');
-            test.appendChild(document.createTextNode("init"));
-
-            
-            // ID - Helps clean up long code
-            function $(id){
-                return document.getElementById(id);
-            }
-        </script>
     </head>
-    <body onload="buildIt(test);">
+    <body onload= "buildIt('init');">
         <header>
             <h1 id="title">Vehicle Builder</h1>
         </header>
@@ -37,6 +20,5 @@
             <div id="forms"></div>
             <div id="finalDisplay"></div>
         </div>
-        
     </body>
 </html>
