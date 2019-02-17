@@ -7,10 +7,15 @@ function buildFinalForm(){
         // Form
         var finalForm = document.createElement('form'); // create form
             finalForm.setAttribute('method','POST');         // give form method POST
-            // finalForm.setAttribute('action','index.html');   // redirect user after form submission
+            finalForm.setAttribute('action','index.html');   // redirect user after form submission
             finalForm.setAttribute('id','myFinalForm');
             finalForm.setAttribute('onsubmit', 'return validation();');  // call validation method
 
+
+        // Form Header
+        var formHeader = document.createElement('h2');
+        formHeader.appendChild(document.createTextNode("Fill out the form to get your vehicle!"));
+        
 
         // Text/labels next to the fields
         var fNameText = document.createTextNode("First Name ");
@@ -46,6 +51,7 @@ function buildFinalForm(){
     
         // Showing forms & appending options
         $('forms').appendChild(finalForm); 
+        $('myFinalForm').appendChild(formHeader);
         $('myFinalForm').appendChild(fNameText);  
         $('myFinalForm').appendChild(inputFName); 
         $('myFinalForm').appendChild(lNameText);   

@@ -31,11 +31,20 @@ function buildIt(dom){
             return;
         }
         if(data[userClicked] == undefined){ // No more items!
+
+            var finalDispHeader = document.createElement('h1');
+            finalDispHeader.appendChild(document.createTextNode("Your selections:"));
+            $('finalDisplay').appendChild(finalDispHeader);
+
+            var selectedChoices;
             // Display choices - Place in displayDiv
             // NOTE: i is set to 1 initially to skip the 'init' from showing
-            // for(var i = 1; i < choices.length; i++){
-            //     console.log(choices[i]);
-            // }
+            for(var i = 1; i < choices.length; i++){
+                selectedChoices = document.createElement('p');
+                selectedChoices.appendChild(document.createTextNode(choices[i]));
+                console.log(choices[i]);
+                $('finalDisplay').appendChild(selectedChoices);
+            }
 
             buildFinalForm(); // builds the final form for gathering user information
         }
