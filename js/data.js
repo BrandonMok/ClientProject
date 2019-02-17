@@ -5,23 +5,23 @@
 var data = new Object();
 
 // Base options
-data['init']=['car','truck','suv'];
+data['init']=["-- Select --",'car','truck','suv'];
 
 // Car
-data['car']=['sedan','hatchback'];  
-data['sedan']=['awd','rwd'];
-data['hatchback']=['cloth','leather'];
+data['car']=["-- Select --",'sedan','hatchback'];  
+data['sedan']=["-- Select --",'awd','rwd'];
+data['hatchback']=["-- Select --",'cloth','leather'];
 
 // Truck
-data['truck']=['van','pickup'];
-data['pickup']=['gas','diesal'];
-data['gas']=['2 seats','4 seats'];
-data['diesal']=['large','medium','small'];
-data['van']=['mini','camper','transit']; 
+data['truck']=["-- Select --",'van','pickup'];
+data['pickup']=["-- Select --",'gas','diesal'];
+data['gas']=["-- Select --",'2 seats','4 seats'];
+data['diesal']=["-- Select --",'large','medium','small'];
+data['van']=["-- Select --",'mini','camper','transit','box']; 
 
 
 // SUV
-data['suv']=['affordable','luxury'];
-data['affordable']=['lane assist','back-up camera'];
-data['luxury']=['wood','carbon fiber'];
-data['carbon fiber']=['Head-up display','touchpad'];
+data['suv']=["-- Select --",'affordable','luxury'];
+data['affordable']=["-- Select --",'lane assist','back-up camera'];
+data['luxury']=["-- Select --",'wood','carbon fiber'];
+data['carbon fiber']=["-- Select --",'Head-up display','touchpad'];

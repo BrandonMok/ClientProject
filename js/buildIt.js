@@ -20,8 +20,8 @@ function buildIt(dom){
     var question; // questions 
     
     // -- Select -- preOption
-    var preOption = document.createElement('option');
-    preOption.appendChild(document.createTextNode("-- Select --"));
+    // var preOption = document.createElement('option');
+    // preOption.appendChild(document.createTextNode("-- Select --"));
 
 
     // check that there's a value
@@ -63,8 +63,6 @@ function buildIt(dom){
             menu.setAttribute('onchange','buildIt(this);');
             $('forms').appendChild(menu); // show menu to screen
 
-            // Menu adding the  -- Select -- option
-            menu.appendChild(preOption);
 
             // Loop that makes options, loads option data, and puts it in menu
             for(var i = 0; i < data[userClicked].length; i++){
