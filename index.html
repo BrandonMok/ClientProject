@@ -14,7 +14,7 @@
         <script> 
             // Check for outdated browsers
             if(!document.getElementById){
-                window.location = legacy.html;
+                window.location.href = "http://outdatedbrowser.com";
             }
 
             // Need an option to be sent to start
@@ -22,7 +22,7 @@
             test.appendChild(document.createTextNode("init"));
 
             
-            // ID
+            // ID - Helps clean up long code
             function $(id){
                 return document.getElementById(id);
             }
