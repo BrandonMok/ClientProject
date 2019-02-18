@@ -33,6 +33,7 @@ function buildIt(dom){
 
 
         // Check if user chose the '-- Select --' option
+        // ACTS as a precaution
         if(dom.value == "-- Select --"){
             return; // return nothing
         }
@@ -40,11 +41,15 @@ function buildIt(dom){
 
         // Check if there aren't any items/data
         if(hold == undefined){ 
+            // Div to hold the final display items
+            var contentDiv = document.createElement('div');
+            contentDiv.setAttribute("id","contentDiv");
+            $('finalDisplay').appendChild(contentDiv);
 
             // Header
             var finalDispHeader = document.createElement('h1');
             finalDispHeader.appendChild(document.createTextNode("Your selections:"));
-            $('finalDisplay').appendChild(finalDispHeader);
+            $('contentDiv').appendChild(finalDispHeader);
 
 
             // Display choices - Place in displayDiv
@@ -52,7 +57,7 @@ function buildIt(dom){
             for(var i = 1; i < choices.length; i++){
                 var selectedChoices = document.createElement('p');
                 selectedChoices.appendChild(document.createTextNode(choices[i]));
-                $('finalDisplay').appendChild(selectedChoices);
+                $('contentDiv').appendChild(selectedChoices);
             }
 
             buildFinalForm(); // builds the final form for gathering user information
@@ -64,7 +69,8 @@ function buildIt(dom){
         if(hold != undefined){
 
             // Show Question first
-            var question = document.createTextNode(holdQ[0]);
+            var question = document.createElement('h3');
+            question.appendChild(document.createTextNode((holdQ[0])));
             $('forms').appendChild(question);
 
 

@@ -14,6 +14,10 @@ body{
     background-color: #EBE9E9;
 }
 
+p{
+    font-size: 1.3rem; 
+}
+
 /** Header title */
 header h1{
     background-color: #EF4648; /* Blue: #3291D3 */
@@ -56,6 +60,7 @@ select{
     animation: fade 2s;
     width: 6.5em;
 }
+
 
 
 /** 
