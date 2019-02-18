@@ -11,6 +11,16 @@
         <script src="./js/buildIt.js"></script><!-- BuildIt function  -->
         <script src="./js/buildFinalForm.js"></script><!-- Form Build function-->
         <script src="./js/validation.js"></script><!-- Validation function-->
+        <script>
+            var ieSeven = false; // check for ieSeven
+        </script>
+
+        <!--[if lt IE 8]>
+            <script>
+                var ieSeven = true;
+            </script>
+        <![endif]-->
+
     </head>
     <body onload= "buildIt('init');">
         <header>

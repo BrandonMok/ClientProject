@@ -15,6 +15,7 @@ function buildIt(dom){
     // Array used to hold entered choices
     choices.push(dom.value);
 
+
     // First check for outdated browsers
     if(!document.getElementById){
         window.location = "http://outdatedbrowser.com";
@@ -39,6 +40,7 @@ function buildIt(dom){
 
         // Check if there aren't any items/data
         if(hold == undefined){ 
+
             // Header
             var finalDispHeader = document.createElement('h1');
             finalDispHeader.appendChild(document.createTextNode("Your selections:"));
@@ -52,7 +54,6 @@ function buildIt(dom){
                 selectedChoices.appendChild(document.createTextNode(choices[i]));
                 $('finalDisplay').appendChild(selectedChoices);
             }
-
 
             buildFinalForm(); // builds the final form for gathering user information
         }
@@ -69,7 +70,11 @@ function buildIt(dom){
 
             // Menu creation
             var menu = document.createElement('select');
-            menu.setAttribute('onchange','buildIt(this);');
+            if(ieSeven){
+                menu.setAttribute('onchange', function(){'buildIt(this);'});
+            }else{
+                menu.setAttribute('onchange','buildIt(this);');
+            }
             $('forms').appendChild(menu); // show menu to screen
 
 
