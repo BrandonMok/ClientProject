@@ -93,9 +93,19 @@ function buildFinalForm(){
 
                 // Sets preset recorded information
                 $("fName").setAttribute("value", localStorage.getItem("firstName"));
-                $("lName").setAttribute("value",localStorage.getItem("lastName"));
-                $("email").setAttribute("value",localStorage.getItem("email"));
+                $("lName").setAttribute("value", localStorage.getItem("lastName"));
+                $("email").setAttribute("value", localStorage.getItem("email"));
             } 
+
+
+            // if(GetCookie('firstName') == "" && GetCookie('lastName') == "" && GetCookie('email' == "")){
+            //     // Might need to change
+    
+            //     // Setting cookies
+            //     $("fName").setAttribute("value", GetCookie('firstName', $("fName")));
+            //     $("lName").setAttribute("value", GetCookie('lastName', $('lName')));
+            //     $("email").setAttribute("value", GetCookie('email',$('email')));
+            // }
         }
 }
 

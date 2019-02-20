@@ -20,12 +20,20 @@ function validation(){
     if(window.localStorage){
         // If form is filled out - store info
         if( $("fName").value != undefined && $("lName").value != undefined  && $("email").value != undefined ){
-                localStorage.setItem("firstName",$("fName").value);
-                localStorage.setItem("lastName",$("lName").value);
-                localStorage.setItem("email",$("email").value);
+            localStorage.setItem("firstName",$("fName").value);
+            localStorage.setItem("lastName",$("lName").value);
+            localStorage.setItem("email",$("email").value);
         }
     }else{ // The IE 7 way
         // Use cookies
+        // if(GetCookie('firstName') == null && GetCookie('lastName') == null && GetCookie('email' == null)){
+        //     // Might need to change
+
+        //     // Setting cookies
+        //     SetCookie('firstName', $("fName"));
+        //     SetCookie('lastName', $('lName'));
+        //     SetCookie('email', $('email'));
+        // }
     }
 
     return true;
