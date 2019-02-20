@@ -15,7 +15,6 @@ function buildIt(dom){
     // Array used to hold entered choices
     choices.push(dom.value);
 
-
     // First check for outdated browsers
     if(!document.getElementById){
         window.location = "http://outdatedbrowser.com";
@@ -62,17 +61,33 @@ function buildIt(dom){
 
             buildFinalForm(); // builds the final form for gathering user information
         }
+        else{
+            // Case there ARE options available and then make the Select menu and options
 
-        
+            // console.log(dom);
+            // if(dom.hasChildNodes){
+            //  //   dom.removeChild(dom.childNodes);
+            //     for(var i =0; i < dom.childNodes.length; i++){
+            //         dom.removeChild(dom.childNodes[i]);
+            //     }
+            // }
 
-        // Check if there ARE options available and then make the Select menu and options
-        if(hold != undefined){
+            // if(menu != undefined){
+            // // if the array index key already exists
+            //     alert('yelo');
+            // }
+            
+            // console.log(dom.parentNode.children);
 
+            // // for later
+            // var node = document.getElementById('whatever');
+            // node.childNodes = new Array();
+
+    
             // Show Question first
             var question = document.createElement('h3');
             question.appendChild(document.createTextNode((holdQ[0])));
             $('forms').appendChild(question);
-
 
             // Menu creation
             var menu = document.createElement('select');
@@ -82,6 +97,8 @@ function buildIt(dom){
                 menu.setAttribute('onchange','buildIt(this);');
             }
             $('forms').appendChild(menu); // show menu to screen
+
+
 
 
             // Loop that makes options, loads option data, and puts it in menu

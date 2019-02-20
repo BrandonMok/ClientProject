@@ -78,6 +78,25 @@ function buildFinalForm(){
         $('myFinalForm').appendChild(emailText);  
         $('myFinalForm').appendChild(inputEmail);
         $('myFinalForm').appendChild(submit);
+
+            
+
+        
+        // local Storage retrival
+        if($("fName").value == "" || $("lName").value == ""  ||  $("email").value == ""){
+            // Check first to see if there is anything in localstorage
+            if(window.localStorage.length == 0){
+                console.log("Local Storage is empty!");
+                return;
+            }else{
+                // Case when there are pairs in the LocalStorage
+
+                // Sets preset recorded information
+                $("fName").setAttribute("value", localStorage.getItem("firstName"));
+                $("lName").setAttribute("value",localStorage.getItem("lastName"));
+                $("email").setAttribute("value",localStorage.getItem("email"));
+            } 
+        }
 }
 
 
