@@ -9,6 +9,7 @@ function buildFinalForm(){
             finalForm.setAttribute('method','POST');         // give form method POST
             finalForm.setAttribute('action','index.html');   // redirect user after form submission
             finalForm.setAttribute('id','myFinalForm');
+
             if(ieSeven){
                 finalForm.setAttribute('onsubmit', function(){return validation();});  // call validation method
             }else{
@@ -32,17 +33,20 @@ function buildFinalForm(){
             inputFName.setAttribute('type','text');
             inputFName.setAttribute('id','fName');
             inputFName.setAttribute('name', 'fName');
+
             if(ieSeven){
                 inputFName.setAttribute('onchange', function(){formUpdateCheck(this)});
             }else{
                 inputFName.setAttribute('onchange','formUpdateCheck(this)');
             }
 
+
         // Last Name
         var inputLName = document.createElement('input');
             inputLName.setAttribute('type','text');
             inputLName.setAttribute('id','lName');
             inputLName.setAttribute('name', 'lName');
+
             if(ieSeven){
                 inputLFName.setAttribute('onchange', function(){formUpdateCheck(this)});
             }else{
@@ -54,6 +58,7 @@ function buildFinalForm(){
             inputEmail.setAttribute('type','email');
             inputEmail.setAttribute('id','email');
             inputEmail.setAttribute('name', 'email');
+
             if(ieSeven){
                inputEmail.setAttribute('onchange', function(){formUpdateCheck(this)});
             }else{
@@ -82,13 +87,13 @@ function buildFinalForm(){
             
 
         
-        // local Storage retrival
+        // local Storage retrieval 
         if($("fName").value == "" || $("lName").value == ""  ||  $("email").value == ""){
             // Local Storage 
             if(window.localStorage){
+                // Check if there's anything in the local storage first
                 if(window.localStorage.length == 0){
                     console.log("Local Storage is empty!");
-                    return;
                 }else{
                     // Case when there are pairs in the LocalStorage
                     // Sets preset recorded information
@@ -97,12 +102,21 @@ function buildFinalForm(){
                     $("email").setAttribute("value", localStorage.getItem("email"));
                 }
             }else{ // Cookie - way for IE7
-                // Setting cookies
-                $("fName").setAttribute("value", GetCookie('firstName', $("fName")));
-                $("lName").setAttribute("value", GetCookie('lastName', $('lName')));
-                $("email").setAttribute("value", GetCookie('email',$('email')));
+
+                // If cookies don't exist - precaution/check
+                if(GetCookie('firstName') == undefined || GetCookie('lastName') == undefined || GetCookie('email') == undefined){
+                    console.log("No cookies!");
+                }else{
+                    // Case cookies exist
+
+                    
+                    // Setting cookies
+                    $("fName").setAttribute("value", GetCookie('firstName', $("fName")));
+                    $("lName").setAttribute("value", GetCookie('lastName', $('lName')));
+                    $("email").setAttribute("value", GetCookie('email', $('email')));
+                }
             }
-    }
+        }
 }
 
 
