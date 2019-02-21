@@ -7,7 +7,7 @@ function buildFinalForm(){
         // Form
         var finalForm = document.createElement('form'); // create form
             finalForm.setAttribute('method','POST');         // give form method POST
-            finalForm.setAttribute('action','index.html');   // redirect user after form submission
+            finalForm.setAttribute('action','/index.html');   // redirect user after form submission
             finalForm.setAttribute('id','myFinalForm');
 
             if(ieSeven){
@@ -109,7 +109,6 @@ function buildFinalForm(){
                 }else{
                     // Case cookies exist
 
-                    
                     // Setting cookies
                     $("fName").setAttribute("value", GetCookie('firstName', $("fName")));
                     $("lName").setAttribute("value", GetCookie('lastName', $('lName')));

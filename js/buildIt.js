@@ -15,12 +15,13 @@ function buildIt(dom){
     // Array used to hold entered choices
     choices.push(dom.value);
 
+
+
     // First check for outdated browsers
     if(!document.getElementById){
         window.location = "http://outdatedbrowser.com";
     }else{
-
-
+        
         // Check for the initial 'init' - first part ran only once
         if(dom == "init"){
             hold = data["init"];    // get the data for using the key
@@ -61,35 +62,30 @@ function buildIt(dom){
 
             buildFinalForm(); // builds the final form for gathering user information
         }
-        else{
-            // Case there ARE options available and then make the Select menu and options
+        else{// Case there ARE options available and then make the Select menu and options
 
-            // console.log(dom);
-            // if(dom.hasChildNodes){
-            //  //   dom.removeChild(dom.childNodes);
-            //     for(var i =0; i < dom.childNodes.length; i++){
-            //         dom.removeChild(dom.childNodes[i]);
-            //     }
-            // }
-            // console.log(dom.parentNode.children);
+            /**
+             * Removes choices depending on previous
+             * Only works if an option menu - can't be the initial 'init' bc it's the first form
+             */
+            if(dom != "init"){
+                // Case that user starts over 
+                // Checks to see if that menu is the last, if not remove all others
+                while(dom != dom.parentNode.lastChild){
+                    dom.parentNode.removeChild(dom.parentNode.lastChild);
+                }
+            }
 
-            // for later
-            var allForms = $('forms'); // get the div w/all children
-            allForms.childNodes = new Array();  // make an array out of them
-            // console.log(allForms.indexOf(dom));
-            console.log(allForms.childNodes);
 
-            
+            // Container div to hold question and menu
             var questionAnswerCont = document.createElement('div');
             questionAnswerCont.setAttribute('id','formPackage');
             $('forms').appendChild(questionAnswerCont);
 
-
             // Show Question first
             var question = document.createElement('h3');
             question.appendChild(document.createTextNode((holdQ[0])));
-           // $('forms').appendChild(question);
-           $('formPackage').appendChild(question);
+            $('formPackage').appendChild(question);
 
             // Menu creation
             var menu = document.createElement('select');
@@ -98,9 +94,7 @@ function buildIt(dom){
             }else{
                 menu.setAttribute('onchange','buildIt(this);');
             }
-          //  $('forms').appendChild(menu); // show menu to screen
             $('formPackage').appendChild(menu);
-
 
 
             // Loop that makes options, loads option data, and puts it in menu
