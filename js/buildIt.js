@@ -71,23 +71,25 @@ function buildIt(dom){
             //         dom.removeChild(dom.childNodes[i]);
             //     }
             // }
-
-            // if(menu != undefined){
-            // // if the array index key already exists
-            //     alert('yelo');
-            // }
-            
             // console.log(dom.parentNode.children);
 
-            // // for later
-            // var node = document.getElementById('whatever');
-            // node.childNodes = new Array();
+            // for later
+            var allForms = $('forms'); // get the div w/all children
+            allForms.childNodes = new Array();  // make an array out of them
+            // console.log(allForms.indexOf(dom));
+            console.log(allForms.childNodes);
 
-    
+            
+            var questionAnswerCont = document.createElement('div');
+            questionAnswerCont.setAttribute('id','formPackage');
+            $('forms').appendChild(questionAnswerCont);
+
+
             // Show Question first
             var question = document.createElement('h3');
             question.appendChild(document.createTextNode((holdQ[0])));
-            $('forms').appendChild(question);
+           // $('forms').appendChild(question);
+           $('formPackage').appendChild(question);
 
             // Menu creation
             var menu = document.createElement('select');
@@ -96,8 +98,8 @@ function buildIt(dom){
             }else{
                 menu.setAttribute('onchange','buildIt(this);');
             }
-            $('forms').appendChild(menu); // show menu to screen
-
+          //  $('forms').appendChild(menu); // show menu to screen
+            $('formPackage').appendChild(menu);
 
 
 

@@ -26,14 +26,12 @@ function validation(){
         }
     }else{ // The IE 7 way
         // Use cookies
-        // if(GetCookie('firstName') == null && GetCookie('lastName') == null && GetCookie('email' == null)){
-        //     // Might need to change
-
-        //     // Setting cookies
-        //     SetCookie('firstName', $("fName"));
-        //     SetCookie('lastName', $('lName'));
-        //     SetCookie('email', $('email'));
-        // }
+        if(GetCookie('firstName') != undefined && GetCookie('lastName') != undefined && GetCookie('email') != undefined){
+            // Setting cookies
+            SetCookie('firstName', $("fName"));
+            SetCookie('lastName', $('lName'));
+            SetCookie('email', $('email'));
+        }
     }
 
     return true;

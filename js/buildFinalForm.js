@@ -78,35 +78,31 @@ function buildFinalForm(){
         $('myFinalForm').appendChild(emailText);  
         $('myFinalForm').appendChild(inputEmail);
         $('myFinalForm').appendChild(submit);
-
+    
             
 
         
         // local Storage retrival
         if($("fName").value == "" || $("lName").value == ""  ||  $("email").value == ""){
-            // Check first to see if there is anything in localstorage
-            if(window.localStorage.length == 0){
-                console.log("Local Storage is empty!");
-                return;
-            }else{
-                // Case when there are pairs in the LocalStorage
-
-                // Sets preset recorded information
-                $("fName").setAttribute("value", localStorage.getItem("firstName"));
-                $("lName").setAttribute("value", localStorage.getItem("lastName"));
-                $("email").setAttribute("value", localStorage.getItem("email"));
-            } 
-
-
-            // if(GetCookie('firstName') == "" && GetCookie('lastName') == "" && GetCookie('email' == "")){
-            //     // Might need to change
-    
-            //     // Setting cookies
-            //     $("fName").setAttribute("value", GetCookie('firstName', $("fName")));
-            //     $("lName").setAttribute("value", GetCookie('lastName', $('lName')));
-            //     $("email").setAttribute("value", GetCookie('email',$('email')));
-            // }
-        }
+            // Local Storage 
+            if(window.localStorage){
+                if(window.localStorage.length == 0){
+                    console.log("Local Storage is empty!");
+                    return;
+                }else{
+                    // Case when there are pairs in the LocalStorage
+                    // Sets preset recorded information
+                    $("fName").setAttribute("value", localStorage.getItem("firstName"));
+                    $("lName").setAttribute("value", localStorage.getItem("lastName"));
+                    $("email").setAttribute("value", localStorage.getItem("email"));
+                }
+            }else{ // Cookie - way for IE7
+                // Setting cookies
+                $("fName").setAttribute("value", GetCookie('firstName', $("fName")));
+                $("lName").setAttribute("value", GetCookie('lastName', $('lName')));
+                $("email").setAttribute("value", GetCookie('email',$('email')));
+            }
+    }
 }
 
 
