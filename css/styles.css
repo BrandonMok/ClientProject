@@ -25,7 +25,10 @@ h3{
 }
 
 /** Header title */
-header h1{
+
+
+/** Title at top of page */
+#title{
     background-color: #EF4648; /* Blue: #3291D3 */
     color: white;
     padding: 1.25em;
@@ -34,13 +37,13 @@ header h1{
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.596);
 }
 
+
 /** 
 * Container that holds two divs - forms & display 
 */
 .container{
     display: flex;
     margin: 4em 5em;
-    /* height: 50em;    If not here, then can have each individual show */
 }
 
 /* divs for the forms and the final display */

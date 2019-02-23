@@ -23,9 +23,9 @@ function storeLocalInfo(){
         // Use cookies
         if(GetCookie('firstName') != undefined && GetCookie('lastName') != undefined && GetCookie('email') != undefined){
             // Setting cookies
-            SetCookie('firstName', $("fName"));
-            SetCookie('lastName', $('lName'));
-            SetCookie('email', $('email'));
+            SetCookie('firstName', $("fName").value);
+            SetCookie('lastName', $('lName').value);
+            SetCookie('email', $('email').value);
         }
     }
 }
