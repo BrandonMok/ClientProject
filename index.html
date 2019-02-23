@@ -6,6 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./css/styles.css">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <script>
+            var ieSeven = false;
+        </script>
+        
+        <!--[if lte IE 8]>
+            <script>
+                var ieSeven = true;
+            </script>
+        <![endif]-->
+
         <script src="./js/data.js"></script> <!-- Data Source -->
         <script src="./js/questionData.js"></script><!-- Question Data Source -->
         <script src="./js/buildIt.js"></script><!-- BuildIt function (MAIN)  -->
@@ -13,15 +23,6 @@
         <script src="./js/validation.js"></script><!-- Validation function-->
         <script src="./js/localStorageCookie.js"></script> <!-- LocalStorage & cookie handling -->
         <script src="./js/cookies.js"></script><!-- Cookie -->
-        <script>
-            var ieSeven = false; // check for ieSeven
-        </script>
-
-        <!--[if lt IE 8]>
-            <script>
-                var ieSeven = true;
-            </script>
-        <![endif]-->
 
     </head>
     <body onload= "buildIt('init');">

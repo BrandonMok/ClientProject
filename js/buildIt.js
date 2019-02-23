@@ -21,7 +21,7 @@ function buildIt(dom){
     if(!document.getElementById){
         window.location = "http://outdatedbrowser.com";
     }else{
-        
+    
         // Check for the initial 'init' - first part ran only once
         if(dom == "init"){
             hold = data["init"];    // get the data for using the key
@@ -82,13 +82,11 @@ function buildIt(dom){
                 while(dom != dom.parentNode.lastChild){
                     dom.parentNode.removeChild(dom.parentNode.lastChild);  
 
-
                     // Remove all choices after the choice reselected
                     // Didn't work with a for loop 
                     if(choices[index] != dom.parentNode.lastChild){
                         choices.pop();  // Remove elements from the array - from the end
                     }
-
                     index++; // increment the index track
 
 
@@ -112,7 +110,8 @@ function buildIt(dom){
             // Menu creation
             var menu = document.createElement('select');
             if(ieSeven){
-                menu.setAttribute('onchange', function(){'buildIt(this);'});
+                //menu.setAttribute('onchange', function(){'buildIt(this);'});
+                menu.onChange = function(){buildIt(this);};
             }else{
                 menu.setAttribute('onchange','buildIt(this);');
             }

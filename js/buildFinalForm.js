@@ -36,6 +36,7 @@ function buildFinalForm(){
         // Forking for ieSeven
         if(ieSeven){
             inputFName.setAttribute('onchange', function(){formUpdateCheck(this);});
+           
         }else{
             inputFName.setAttribute('onchange', 'formUpdateCheck(this);');
         }
@@ -46,7 +47,7 @@ function buildFinalForm(){
         inputLName.setAttribute('type','text');
         inputLName.setAttribute('id','lName');
         inputLName.setAttribute('name', 'lName');
-            // Forking for ieSeven
+        // Forking for ieSeven
         if(ieSeven){
             inputLFName.setAttribute('onchange', function(){formUpdateCheck(this);});
         }else{
