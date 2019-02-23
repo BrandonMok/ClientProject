@@ -51,7 +51,6 @@ function buildIt(dom){
             finalDispHeader.appendChild(document.createTextNode("Your selections:"));
             $('contentDiv').appendChild(finalDispHeader);
 
-
             // Display choices - Place in displayDiv
             // NOTE: i is set to 1 initially to skip the 'init' from showing
             for(var i = 1, len = choices.length; i < len; i++){
@@ -60,6 +59,11 @@ function buildIt(dom){
                 $('contentDiv').appendChild(selectedChoices);
             }
 
+            /* Check if the from is present already */
+            /* If it is, remove it and rebuild */
+            if($('myFinalForm')){
+                $('myFinalForm').remove();
+            }
             buildFinalForm(); // builds the final form for gathering user information
         }
         else{
@@ -77,6 +81,7 @@ function buildIt(dom){
 
                     // Also delete the form 
                     if($('myFinalForm')){
+                        $('myFinalForm').style.animation="fade";
                         $('myFinalForm').remove();
                     }  
                     // Also delete the dynamic div that display selected choices
