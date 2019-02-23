@@ -41,6 +41,11 @@ function buildIt(dom){
 
         // Check if there aren't any items/data
         if(hold == undefined){ 
+
+            // Checks to see if form and selection display are present
+            // if so delete
+            selectionsFormCheck();    
+
             // Div to hold the final display items
             var contentDiv = document.createElement('div');
             contentDiv.setAttribute("id","contentDiv");
@@ -59,11 +64,7 @@ function buildIt(dom){
                 $('contentDiv').appendChild(selectedChoices);
             }
 
-            /* Check if the from is present already */
-            /* If it is, remove it and rebuild */
-            if($('myFinalForm')){
-                $('myFinalForm').remove();
-            }
+
             buildFinalForm(); // builds the final form for gathering user information
         }
         else{
@@ -73,21 +74,32 @@ function buildIt(dom){
              * Removes choices depending on previous
              * Only works if an option menu - can't be the initial 'init' bc it's the first form
              */
+
+            var index = 1;
+
             if(dom != "init"){
                 // Case that user starts over 
                 // Checks to see if that menu is the last, if not remove all others
                 while(dom != dom.parentNode.lastChild){
                     dom.parentNode.removeChild(dom.parentNode.lastChild);  
 
-                    // Also delete the form 
-                    if($('myFinalForm')){
-                        $('myFinalForm').style.animation="fade";
-                        $('myFinalForm').remove();
-                    }  
-                    // Also delete the dynamic div that display selected choices
-                    if($('contentDiv')){
-                        $('contentDiv').remove();
+
+                    // for(var i = 1, len = choices.length; i < len; i++){
+                    //     if(choices[i] != dom.parentNode.lastChild){
+                    //         choices.pop();  // Remove elements from the array - from the end
+                    //     }
+                    // }
+
+                    // Remove all choices after the choice reselected
+                    if(choices[index] != dom.parentNode.lastChild){
+                        choices.pop();  // Remove elements from the array - from the end
                     }
+                    index++; // increment the index track
+
+
+                    // in a while loop though
+                    // removes form and selections made display if changed a choice
+                    selectionsFormCheck();
                 }
             }
 
@@ -131,4 +143,16 @@ function buildIt(dom){
  */
 function $(id){
     return document.getElementById(id);
+}
+
+
+function selectionsFormCheck(){
+    /* Check if the from is present already */
+    /* If it is, remove it and rebuild */
+    if($('myFinalForm')){
+        $('myFinalForm').remove();
+    }
+    if($('contentDiv')){
+        $('contentDiv').remove();
+    }
 }
