@@ -9,7 +9,7 @@ function buildFinalForm(){
             finalForm.setAttribute('method','POST');         // give form method POST
             finalForm.setAttribute('action','/index.html');   // redirect user after form submission
             finalForm.setAttribute('id','myFinalForm');
-
+            // Forking for ieSeven
             if(ieSeven){
                 finalForm.setAttribute('onsubmit', function(){return validation();});  // call validation method
             }else{
@@ -19,7 +19,7 @@ function buildFinalForm(){
 
         // Form Header
         var formHeader = document.createElement('h2');
-        formHeader.appendChild(document.createTextNode('Fill out the form to get your vehicle!'));
+            formHeader.appendChild(document.createTextNode('Fill out the form to get your vehicle!'));
         
 
         // Text/labels next to the fields
@@ -33,7 +33,7 @@ function buildFinalForm(){
             inputFName.setAttribute('type','text');
             inputFName.setAttribute('id','fName');
             inputFName.setAttribute('name', 'fName');
-
+            // Forking for ieSeven
             if(ieSeven){
                 inputFName.setAttribute('onchange', function(){formUpdateCheck(this)});
             }else{
@@ -46,7 +46,7 @@ function buildFinalForm(){
             inputLName.setAttribute('type','text');
             inputLName.setAttribute('id','lName');
             inputLName.setAttribute('name', 'lName');
-
+             // Forking for ieSeven
             if(ieSeven){
                 inputLFName.setAttribute('onchange', function(){formUpdateCheck(this)});
             }else{
@@ -58,7 +58,7 @@ function buildFinalForm(){
             inputEmail.setAttribute('type','email');
             inputEmail.setAttribute('id','email');
             inputEmail.setAttribute('name', 'email');
-
+             // Forking for ieSeven
             if(ieSeven){
                inputEmail.setAttribute('onchange', function(){formUpdateCheck(this)});
             }else{
@@ -82,9 +82,7 @@ function buildFinalForm(){
         $('myFinalForm').appendChild(inputLName);
         $('myFinalForm').appendChild(emailText);  
         $('myFinalForm').appendChild(inputEmail);
-        $('myFinalForm').appendChild(submit);
-    
-            
+        $('myFinalForm').appendChild(submit);      
 
         
         // local Storage retrieval 
@@ -92,27 +90,32 @@ function buildFinalForm(){
             // Local Storage 
             if(window.localStorage){
                 // Check if there's anything in the local storage first
-                if(window.localStorage.length == 0){
-                    console.log("Local Storage is empty!");
-                }else{
+                if(window.localStorage.length > 0){
                     // Case when there are pairs in the LocalStorage
                     // Sets preset recorded information
                     $("fName").setAttribute("value", localStorage.getItem("firstName"));
                     $("lName").setAttribute("value", localStorage.getItem("lastName"));
                     $("email").setAttribute("value", localStorage.getItem("email"));
+
+                    // Use DTHML to apply green filled in background
+                    formUpdateCheck($("fName"));
+                    formUpdateCheck($("lName"));
+                    formUpdateCheck($("email"));
+                    
                 }
             }else{ // Cookie - way for IE7
 
-                // If cookies don't exist - precaution/check
-                if(GetCookie('firstName') == undefined || GetCookie('lastName') == undefined || GetCookie('email') == undefined){
-                    console.log("No cookies!");
-                }else{
-                    // Case cookies exist
-
+                // If there are cookies!
+                if(GetCookie('firstName') != undefined || GetCookie('lastName') != undefined || GetCookie('email') != undefined){
                     // Setting cookies
                     $("fName").setAttribute("value", GetCookie('firstName', $("fName")));
                     $("lName").setAttribute("value", GetCookie('lastName', $('lName')));
                     $("email").setAttribute("value", GetCookie('email', $('email')));
+
+                    // Use DTHML to apply green filled in background
+                    formUpdateCheck($("fName"));
+                    formUpdateCheck($("lName"));
+                    formUpdateCheck($("email"));
                 }
             }
         }

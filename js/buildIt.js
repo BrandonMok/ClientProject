@@ -74,8 +74,7 @@ function buildIt(dom){
              * Removes choices depending on previous
              * Only works if an option menu - can't be the initial 'init' bc it's the first form
              */
-
-            var index = 1;
+            var index = 1; // var to hold onto index for array
 
             if(dom != "init"){
                 // Case that user starts over 
@@ -84,16 +83,19 @@ function buildIt(dom){
                     dom.parentNode.removeChild(dom.parentNode.lastChild);  
 
 
-                    // for(var i = 1, len = choices.length; i < len; i++){
-                    //     if(choices[i] != dom.parentNode.lastChild){
-                    //         choices.pop();  // Remove elements from the array - from the end
-                    //     }
-                    // }
-
                     // Remove all choices after the choice reselected
+                    // Didn't work with a for loop 
                     if(choices[index] != dom.parentNode.lastChild){
                         choices.pop();  // Remove elements from the array - from the end
                     }
+
+                    // if(choices[index] == dom.parentNode.firstChild){
+                    //     console.log("YEEP");
+                    //     // for(var i = 2; i < choices.length; i++){
+                    //     //     choices.pop();
+                    //     //     console.log("Hello");
+                    //     // }
+                    // }
                     index++; // increment the index track
 
 
