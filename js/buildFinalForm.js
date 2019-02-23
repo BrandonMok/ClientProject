@@ -7,13 +7,13 @@ function buildFinalForm(){
     // Form
     var finalForm = document.createElement('form'); // create form
         finalForm.setAttribute('method','POST');         // give form method POST
-        finalForm.setAttribute('action','/index.html');   // redirect user after form submission
+       // finalForm.setAttribute('action','/index.html');   // redirect user after form submission
         finalForm.setAttribute('id','myFinalForm');
         // Forking for ieSeven
         if(ieSeven){
             finalForm.setAttribute('onsubmit', function(){return validation();});  // call validation method
         }else{
-            finalForm.setAttribute('onsubmit', 'return validation();');  // call validation method
+            finalForm.setAttribute('onsubmit','return validation();');  // call validation method
         }
 
 
@@ -35,9 +35,9 @@ function buildFinalForm(){
         inputFName.setAttribute('name', 'fName');
         // Forking for ieSeven
         if(ieSeven){
-            inputFName.setAttribute('onchange', function(){formUpdateCheck(this)});
+            inputFName.setAttribute('onchange', function(){formUpdateCheck(this);});
         }else{
-            inputFName.setAttribute('onchange','formUpdateCheck(this)');
+            inputFName.setAttribute('onchange', 'formUpdateCheck(this);');
         }
 
 
@@ -48,9 +48,9 @@ function buildFinalForm(){
         inputLName.setAttribute('name', 'lName');
             // Forking for ieSeven
         if(ieSeven){
-            inputLFName.setAttribute('onchange', function(){formUpdateCheck(this)});
+            inputLFName.setAttribute('onchange', function(){formUpdateCheck(this);});
         }else{
-            inputLName.setAttribute('onchange','formUpdateCheck(this)');
+            inputLName.setAttribute('onchange', 'formUpdateCheck(this)');
         }
 
     // Email
@@ -60,9 +60,9 @@ function buildFinalForm(){
         inputEmail.setAttribute('name', 'email');
             // Forking for ieSeven
         if(ieSeven){
-            inputEmail.setAttribute('onchange', function(){formUpdateCheck(this)});
+            inputEmail.setAttribute('onchange', function(){formUpdateCheck(this);});
         }else{
-            inputEmail.setAttribute('onchange','formUpdateCheck(this)');
+            inputEmail.setAttribute('onchange', 'formUpdateCheck(this)');
         }
         
         

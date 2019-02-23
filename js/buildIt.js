@@ -41,10 +41,10 @@ function buildIt(dom){
 
         // Check if there aren't any items/data
         if(hold == undefined){ 
-
             // Checks to see if form and selection display are present
             // if so delete
             selectionsFormCheck();    
+
 
             // Div to hold the final display items
             var contentDiv = document.createElement('div');
@@ -89,13 +89,6 @@ function buildIt(dom){
                         choices.pop();  // Remove elements from the array - from the end
                     }
 
-                    // if(choices[index] == dom.parentNode.firstChild){
-                    //     console.log("YEEP");
-                    //     // for(var i = 2; i < choices.length; i++){
-                    //     //     choices.pop();
-                    //     //     console.log("Hello");
-                    //     // }
-                    // }
                     index++; // increment the index track
 
 
@@ -152,9 +145,9 @@ function selectionsFormCheck(){
     /* Check if the from is present already */
     /* If it is, remove it and rebuild */
     if($('myFinalForm')){
-        $('myFinalForm').remove();
+        $('myFinalForm').parentNode.removeChild($('myFinalForm').parentNode.lastChild);
     }
     if($('contentDiv')){
-        $('contentDiv').remove();
+        $('contentDiv').parentNode.removeChild($('contentDiv').parentNode.lastChild);
     }
 }
