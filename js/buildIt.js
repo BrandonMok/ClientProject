@@ -8,6 +8,7 @@ var choices = []; // global array to hold choices
 
 
 function buildIt(dom){
+    console.log(dom);
 
     var hold; // hold used to hold dom
     var holdQ;  // Quetion hold that does same as hold, but for Questions data
@@ -26,9 +27,14 @@ function buildIt(dom){
         if(dom == "init"){
             hold = data["init"];    // get the data for using the key
             holdQ = qData["init"];  // get the question data using the key
+
+            console.log("TEST: "  + data["init"]);
         }else{
             hold = data[dom.value]; // Use the value, not the DOM obj for data
             holdQ = qData[dom.value];   // Use the value, not the DOM obj to get the question data
+
+            console.log("TEST IN OTHER: " + dom);
+            console.log("TEST IN OTHER: "  + data[dom.value]);
         }
 
 
@@ -44,7 +50,6 @@ function buildIt(dom){
             // Checks to see if form and selection display are present
             // if so delete
             selectionsFormCheck();    
-
 
             // Div to hold the final display items
             var contentDiv = document.createElement('div');
@@ -67,8 +72,8 @@ function buildIt(dom){
 
             buildFinalForm(); // builds the final form for gathering user information
         }
-        else{
-            // Case there are available choices
+        else{// Case there are available choices
+            
            
             /**
              * Removes choices depending on previous
@@ -90,7 +95,6 @@ function buildIt(dom){
                     index++; // increment the index track
 
 
-                    // in a while loop though
                     // removes form and selections made display if changed a choice
                     selectionsFormCheck();
                 }
@@ -107,11 +111,15 @@ function buildIt(dom){
             question.appendChild(document.createTextNode((holdQ[0])));
             $('menuDIV').appendChild(question);
 
+
+
+
             // Menu creation
             var menu = document.createElement('select');
             if(ieSeven){
-                //menu.setAttribute('onchange', function(){'buildIt(this);'});
-                menu.onChange = function(){buildIt(this);};
+                if(!document.addEventListener){
+                    menu.attachEvent('onchange', function(){buildIt(this);});   
+                }
             }else{
                 menu.setAttribute('onchange','buildIt(this);');
             }
@@ -140,6 +148,11 @@ function $(id){
 }
 
 
+/**
+ * selectionsFormCheck
+ * Used to check if form and selections are shown if user restarts
+ * Gets the parentNode of the element and removes the lastChild (the form & selections)
+ */
 function selectionsFormCheck(){
     /* Check if the from is present already */
     /* If it is, remove it and rebuild */

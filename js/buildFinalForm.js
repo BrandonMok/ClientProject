@@ -35,8 +35,10 @@ function buildFinalForm(){
         inputFName.setAttribute('name', 'fName');
         // Forking for ieSeven
         if(ieSeven){
-            inputFName.setAttribute('onchange', function(){formUpdateCheck(this);});
-           
+            if(!document.addEventListener){
+                inputFName.attachEvent('onchange', function(){formUpdateCheck(this);});
+            }
+           // inputFName.setAttribute('onchange', function(){formUpdateCheck(this);});
         }else{
             inputFName.setAttribute('onchange', 'formUpdateCheck(this);');
         }
@@ -49,7 +51,10 @@ function buildFinalForm(){
         inputLName.setAttribute('name', 'lName');
         // Forking for ieSeven
         if(ieSeven){
-            inputLFName.setAttribute('onchange', function(){formUpdateCheck(this);});
+            if(!document.addEventListener){
+                inputLName.attachEvent('onchange', function(){formUpdateCheck(this);});
+            }
+           // inputLName.setAttribute('onchange', function(){formUpdateCheck(this);});
         }else{
             inputLName.setAttribute('onchange', 'formUpdateCheck(this)');
         }
@@ -61,7 +66,10 @@ function buildFinalForm(){
         inputEmail.setAttribute('name', 'email');
             // Forking for ieSeven
         if(ieSeven){
-            inputEmail.setAttribute('onchange', function(){formUpdateCheck(this);});
+            if(!document.addEventListener){
+                inputEmail.attachEvent('onchange', function(){formUpdateCheck(this);});
+            }
+            //inputEmail.setAttribute('onchange', function(){formUpdateCheck(this);});
         }else{
             inputEmail.setAttribute('onchange', 'formUpdateCheck(this)');
         }
