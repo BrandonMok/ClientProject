@@ -58,10 +58,10 @@ function retrieveLocalInfo(){
 
             // If there are cookies!
             if(GetCookie('firstName') != undefined || GetCookie('lastName') != undefined || GetCookie('email') != undefined){
-                // Setting cookies
-                $("fName").setAttribute("value", GetCookie('firstName', $("fName")));
-                $("lName").setAttribute("value", GetCookie('lastName', $('lName')));
-                $("email").setAttribute("value", GetCookie('email', $('email')));
+                // Setting cookies - Value pair
+                $("fName").setAttribute("value", GetCookie('firstName'));
+                $("lName").setAttribute("value", GetCookie('lastName'));
+                $("email").setAttribute("value", GetCookie('email'));
 
                 // Use DTHML to apply green filled in background
                 formUpdateCheck($("fName"));
