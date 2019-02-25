@@ -13,6 +13,7 @@ function buildIt(dom){
     var hold; // hold used to hold dom
     var holdQ;  // Quetion hold that does same as hold, but for Questions data
 
+
     // Array used to hold entered choices
     //choices.push(dom.value);
     choices.push(dom);
@@ -25,10 +26,10 @@ function buildIt(dom){
 
         // Check for the initial 'init' - first part ran only once
         if(dom == "init"){
-            hold = data["init"];    // get the data for using the key
-            holdQ = qData["init"];  // get the question data using the key
+            hold = data["init"];        // get the data for using the key
+            holdQ = qData["init"];      // get the question data using the key
         }else{
-            hold = data[dom.value]; // Use the value, not the DOM obj for data
+            hold = data[dom.value];     // Use the value, not the DOM obj for data
             holdQ = qData[dom.value];   // Use the value, not the DOM obj to get the question data
 
             console.log("TEST IN OTHER: ");
@@ -38,14 +39,12 @@ function buildIt(dom){
         // Check if user chose the '-- Select --' option
         if(dom.value == "-- Select --"){
             choices.pop(); // Remove option from being tracked
-            return; // return nothing
         }
 
 
         // Check if there aren't any items/data
         if(hold == undefined){ 
-            // Checks to see if form and selection display are present
-            // if so delete
+            // Check if form and selection display are present when there aren't any choices left
             selectionsFormCheck();    
 
             // Div to hold the final display items
@@ -57,6 +56,7 @@ function buildIt(dom){
             var finalDispHeader = document.createElement('h1');
             finalDispHeader.appendChild(document.createTextNode("Your selections:"));
             $('contentDiv').appendChild(finalDispHeader);
+
 
             // Display choices - Place in displayDiv
             // NOTE: i is set to 1 initially to skip the 'init' from showing
@@ -71,7 +71,6 @@ function buildIt(dom){
         }
         else{// Case there are available choices
             
-           
             /**
              * Removes choices depending on previous
              * Only works if an option menu - can't be the initial 'init' bc it's the first form
@@ -84,22 +83,26 @@ function buildIt(dom){
                 while(dom != dom.parentNode.lastChild){
                     dom.parentNode.removeChild(dom.parentNode.lastChild);  
 
-                    // Find the Dom element in array that holds the chosen dom
-                    // for(var i = 0, len = choices.length; i < len; i++){
-                    //     if(choices[i] == dom){// if you found the choice
-                    //         while(choices[i] != dom){
-                    //             choices.pop();
-                    //         }
-                    //     }
-                    // }
+
+                    
+                    for(var i = 0, len = choices.length-1; i < len; i++){
+                        if(choices[i] == dom){// found it 
+                            console.log("found it");
+                            while(i < len){
+                                choices.pop();
+                                i++
+                            }
+                        }                        
+                    }
+                    
                     
                 
                     // Remove all choices after the choice reselected
                    // Didn't work with a for loop - Problem may remove the beginning ones before the right one
-                    if(choices[index] != dom.parentNode.lastChild){
-                        choices.pop();// Remove elements from the array - from the end
-                    }
-                    index++; // increment the index track
+                    // if(choices[index] != dom.parentNode.lastChild){
+                    //     choices.pop();// Remove elements from the array - from the end
+                    // }
+                    // index++; // increment the index track
 
 
                     // removes form and selections made display if changed a choice
