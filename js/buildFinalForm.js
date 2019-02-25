@@ -53,8 +53,7 @@ function buildFinalForm(){
      * IE7 forking for attachingEvents / setting Attributes
      */ 
     if(ieSeven){ // for IE7
-        //finalForm.attachEvent('onsubmit', function(){validation();});           // Actual Form -select
-        finalForm.attachEvent('onclick', validation);
+        finalForm.attachEvent('onsubmit', function(){return validation();});   // Actual Form -select
         inputFName.attachEvent('onchange', function(){formUpdateCheck(this);}); // FirstName field
         inputLName.attachEvent('onchange', function(){formUpdateCheck(this);}); // LastName field
         inputEmail.attachEvent('onchange', function(){formUpdateCheck(this);}); // email field
