@@ -4,18 +4,17 @@
 * Function that builds the selection menu and options
 */
 
-var choices = []; // global array to hold choices
+var choices = []; // global array to hold dom choices
 
 
 function buildIt(dom){
     console.log("DOM AT START: " + dom);
 
-    var hold; // hold used to hold dom
+
+    var hold;   // Hold used to hold dom
     var holdQ;  // Quetion hold that does same as hold, but for Questions data
 
-
-    // Array used to hold entered choices
-    //choices.push(dom.value);
+    // put the selected choice into array - holds the actual dom element
     choices.push(dom);
 
 
@@ -31,8 +30,6 @@ function buildIt(dom){
         }else{
             hold = data[dom.value];     // Use the value, not the DOM obj for data
             holdQ = qData[dom.value];   // Use the value, not the DOM obj to get the question data
-
-            console.log("TEST IN OTHER: ");
         }
 
 
@@ -73,10 +70,8 @@ function buildIt(dom){
             
             /**
              * Removes choices depending on previous
-             * Only works if an option menu - can't be the initial 'init' bc it's the first form
+             * Only works if an option menu - can't be the initial 'init' 
              */
-            var index = 1; // var to hold onto index for array
-
             if(dom != "init"){
                 // Case that user starts over 
                 // Checks to see if that menu is the last, if not remove all others
@@ -84,32 +79,24 @@ function buildIt(dom){
                     dom.parentNode.removeChild(dom.parentNode.lastChild);  
 
 
-                    
+                    // Cycle through choices array
+                    // Find the index and value in the array that equals the selected dom
+                    // if the value at the index equals the dom, then while loop to delete the remainder
                     for(var i = 0, len = choices.length-1; i < len; i++){
                         if(choices[i] == dom){// found it 
-                            console.log("found it");
-                            while(i < len){
-                                choices.pop();
+                            // Since it's found, want to delete the rest of values in the array
+                            // take the i index (the one w/the same dom) and delete choices up to the length
+                            while(i < len){ 
+                                choices.pop();      // remove the remainders
                                 i++
                             }
                         }                        
                     }
-                    
-                    
-                
-                    // Remove all choices after the choice reselected
-                   // Didn't work with a for loop - Problem may remove the beginning ones before the right one
-                    // if(choices[index] != dom.parentNode.lastChild){
-                    //     choices.pop();// Remove elements from the array - from the end
-                    // }
-                    // index++; // increment the index track
-
+                         
 
                     // removes form and selections made display if changed a choice
                     selectionsFormCheck();
                 }
-                
-                index = 1; // reset
             }
 
 
