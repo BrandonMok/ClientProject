@@ -5,7 +5,7 @@
 
 function validation(){
     // Check for empty fields
-    if($('fName').value == '' || $('lName').value == '' || $('email').value == ''){
+    if($('fName').value == "" || $('lName').value == "" || $('email').value == ""){
         $('fName').style.backgroundColor = "#EF4648";
         $('lName').style.backgroundColor = "#EF4648";
         $('email').style.backgroundColor = "#EF4648";

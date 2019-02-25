@@ -14,7 +14,7 @@ function storeLocalInfo(){
     // When user starts over, will fill in the info
     if(window.localStorage){
         // If form is filled out - store info
-        if( $("fName").value != undefined && $("lName").value != undefined  && $("email").value != undefined ){
+        if( $("fName").value != null && $("lName").value != null  && $("email").value != null ){
             localStorage.setItem("firstName", $("fName").value);
             localStorage.setItem("lastName", $("lName").value);
             localStorage.setItem("email", $("email").value);

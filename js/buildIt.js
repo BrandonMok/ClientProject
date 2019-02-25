@@ -8,7 +8,7 @@ var choices = []; // global array to hold choices
 
 
 function buildIt(dom){
-    console.log(dom);
+    console.log("DOM AT START: " + dom);
 
     var hold; // hold used to hold dom
     var holdQ;  // Quetion hold that does same as hold, but for Questions data
@@ -22,19 +22,16 @@ function buildIt(dom){
     if(!document.getElementById){
         window.location = "http://outdatedbrowser.com";
     }else{
-    
+
         // Check for the initial 'init' - first part ran only once
         if(dom == "init"){
             hold = data["init"];    // get the data for using the key
             holdQ = qData["init"];  // get the question data using the key
-
-            console.log("TEST: "  + data["init"]);
         }else{
             hold = data[dom.value]; // Use the value, not the DOM obj for data
             holdQ = qData[dom.value];   // Use the value, not the DOM obj to get the question data
 
-            console.log("TEST IN OTHER: " + dom);
-            console.log("TEST IN OTHER: "  + data[dom.value]);
+            console.log("TEST IN OTHER: ");
         }
 
 
@@ -87,10 +84,20 @@ function buildIt(dom){
                 while(dom != dom.parentNode.lastChild){
                     dom.parentNode.removeChild(dom.parentNode.lastChild);  
 
+                    // Find the Dom element in array that holds the chosen dom
+                    // for(var i = 0, len = choices.length; i < len; i++){
+                    //     if(choices[i] == dom){// if you found the choice
+                    //         while(choices[i] != dom){
+                    //             choices.pop();
+                    //         }
+                    //     }
+                    // }
+                    
+                
                     // Remove all choices after the choice reselected
-                    // Didn't work with a for loop 
+                   // Didn't work with a for loop - Problem may remove the beginning ones before the right one
                     if(choices[index] != dom.parentNode.lastChild){
-                        choices.pop();  // Remove elements from the array - from the end
+                        choices.pop();// Remove elements from the array - from the end
                     }
                     index++; // increment the index track
 
@@ -98,6 +105,8 @@ function buildIt(dom){
                     // removes form and selections made display if changed a choice
                     selectionsFormCheck();
                 }
+                
+                index = 1; // reset
             }
 
 
@@ -112,14 +121,10 @@ function buildIt(dom){
             $('menuDIV').appendChild(question);
 
 
-
-
             // Menu creation
             var menu = document.createElement('select');
             if(ieSeven){
-                if(!document.addEventListener){
-                    menu.attachEvent('onchange', function(){buildIt(this);});   
-                }
+                menu.attachEvent('onchange', function(){buildIt(this);});   
             }else{
                 menu.setAttribute('onchange','buildIt(this);');
             }

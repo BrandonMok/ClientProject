@@ -7,79 +7,59 @@ function buildFinalForm(){
     // Form
     var finalForm = document.createElement('form'); // create form
         finalForm.setAttribute('method','POST');         // give form method POST
-       // finalForm.setAttribute('action','/index.html');   // redirect user after form submission
         finalForm.setAttribute('id','myFinalForm');
-        // Forking for ieSeven
-        if(ieSeven){
-            finalForm.setAttribute('onsubmit', function(){return validation();});  // call validation method
-        }else{
-            finalForm.setAttribute('onsubmit','return validation();');  // call validation method
-        }
 
 
     // Form Header
     var formHeader = document.createElement('h2');
         formHeader.appendChild(document.createTextNode('Fill out the form to get your vehicle!'));
-    
+
 
     // Text/labels next to the fields
     var fNameText = document.createTextNode('First Name ');
     var lNameText = document.createTextNode('Last Name ');
     var emailText = document.createTextNode('Email ');
 
-
     // Input
     var inputFName = document.createElement('input');
         inputFName.setAttribute('type','text');
         inputFName.setAttribute('id','fName');
         inputFName.setAttribute('name', 'fName');
-        // Forking for ieSeven
-        if(ieSeven){
-            if(!document.addEventListener){
-                inputFName.attachEvent('onchange', function(){formUpdateCheck(this);});
-            }
-           // inputFName.setAttribute('onchange', function(){formUpdateCheck(this);});
-        }else{
-            inputFName.setAttribute('onchange', 'formUpdateCheck(this);');
-        }
-
 
     // Last Name
     var inputLName = document.createElement('input');
         inputLName.setAttribute('type','text');
         inputLName.setAttribute('id','lName');
         inputLName.setAttribute('name', 'lName');
-        // Forking for ieSeven
-        if(ieSeven){
-            if(!document.addEventListener){
-                inputLName.attachEvent('onchange', function(){formUpdateCheck(this);});
-            }
-           // inputLName.setAttribute('onchange', function(){formUpdateCheck(this);});
-        }else{
-            inputLName.setAttribute('onchange', 'formUpdateCheck(this)');
-        }
 
     // Email
     var inputEmail = document.createElement('input');
         inputEmail.setAttribute('type','email');
         inputEmail.setAttribute('id','email');
         inputEmail.setAttribute('name', 'email');
-            // Forking for ieSeven
-        if(ieSeven){
-            if(!document.addEventListener){
-                inputEmail.attachEvent('onchange', function(){formUpdateCheck(this);});
-            }
-            //inputEmail.setAttribute('onchange', function(){formUpdateCheck(this);});
-        }else{
-            inputEmail.setAttribute('onchange', 'formUpdateCheck(this)');
-        }
-        
         
     // Submit
     var submit = document.createElement('input');
         submit.setAttribute('type','submit');
         submit.setAttribute('value','submit');
-        submit.setAttribute('id','submitBtn')
+        submit.setAttribute('id','submitBtn');
+
+
+
+    // IE7 forking for attachingEvents / setting Attributes
+    if(ieSeven){ // for IE7
+        finalForm.attachEvent('onsubmit', function(){validation();});           // Actual Form -select
+        inputFName.attachEvent('onchange', function(){formUpdateCheck(this);}); // FirstName field
+        inputLName.attachEvent('onchange', function(){formUpdateCheck(this);}); // LastName field
+        inputEmail.attachEvent('onchange', function(){formUpdateCheck(this);}); // email field
+    }
+    else{   // > IE7
+        finalForm.setAttribute('onsubmit','return validation();');      // Actual form - select
+        inputFName.setAttribute('onchange', 'formUpdateCheck(this);');  // Firstname field
+        inputLName.setAttribute('onchange', 'formUpdateCheck(this)');   // lastname field
+        inputEmail.setAttribute('onchange', 'formUpdateCheck(this)');   // Email field
+    }
+
 
 
     // Showing forms & appending options
