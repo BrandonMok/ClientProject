@@ -6,8 +6,8 @@
 function buildFinalForm(){
     // Form
     var finalForm = document.createElement('form'); // create form
-        finalForm.setAttribute('method','POST');         // give form method POST
-        finalForm.setAttribute('id','myFinalForm');
+        finalForm.setAttribute('method','POST');    // give form method POST
+        finalForm.setAttribute('id','myFinalForm'); // Give an ID 
 
 
     // Form Header
@@ -20,25 +20,27 @@ function buildFinalForm(){
     var lNameText = document.createTextNode('Last Name ');
     var emailText = document.createTextNode('Email ');
 
-    // Input
+
+
+    // First Name Input
     var inputFName = document.createElement('input');
         inputFName.setAttribute('type','text');
         inputFName.setAttribute('id','fName');
         inputFName.setAttribute('name', 'fName');
 
-    // Last Name
+    // Last Name Input
     var inputLName = document.createElement('input');
         inputLName.setAttribute('type','text');
         inputLName.setAttribute('id','lName');
         inputLName.setAttribute('name', 'lName');
 
-    // Email
+    // Email Input
     var inputEmail = document.createElement('input');
         inputEmail.setAttribute('type','email');
         inputEmail.setAttribute('id','email');
         inputEmail.setAttribute('name', 'email');
         
-    // Submit
+    // Submit Button Input
     var submit = document.createElement('input');
         submit.setAttribute('type','submit');
         submit.setAttribute('value','submit');
@@ -46,7 +48,10 @@ function buildFinalForm(){
 
 
 
-    // IE7 forking for attachingEvents / setting Attributes
+
+    /**
+     * IE7 forking for attachingEvents / setting Attributes
+     */ 
     if(ieSeven){ // for IE7
         finalForm.attachEvent('onsubmit', function(){validation();});           // Actual Form -select
         inputFName.attachEvent('onchange', function(){formUpdateCheck(this);}); // FirstName field
@@ -62,7 +67,9 @@ function buildFinalForm(){
 
 
 
-    // Showing forms & appending options
+    /**
+     * Showing forms & appending options
+     */
     $('forms').appendChild(finalForm);  
     $('myFinalForm').appendChild(formHeader);
     $('myFinalForm').appendChild(fNameText);  
@@ -74,9 +81,10 @@ function buildFinalForm(){
     $('myFinalForm').appendChild(submit);      
 
     
+
     // Retrieve the pairs from LS and cookies
     // Use these values to preset/pre-fill the form
-    retrieveLocalInfo()
+    retrieveLocalInfo();
 }
 
 
