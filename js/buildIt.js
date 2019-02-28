@@ -33,8 +33,6 @@ function buildIt(dom){
         }else{
             hold = data[dom.value];     // Use the value, not the DOM obj for data
             holdQ = qData[dom.value];   // Use the value, not the DOM obj to get the question data
-
-            console.log(data[dom.value]);
         }
 
 
@@ -64,7 +62,6 @@ function buildIt(dom){
             }
 
 
-            
             // lastly APPEND the finalDisplay div to the dom
             $('finalDisplay').appendChild(contentDiv);
 
@@ -102,6 +99,7 @@ function buildIt(dom){
                     selectionsFormCheck();
                 }
             }
+
 
 
 

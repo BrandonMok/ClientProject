@@ -9,7 +9,7 @@ data['init']=["-- Select --",'car','truck','suv'];
 
 // Car
 data['car']=["-- Select --",'sedan','hatchback'];  
-data['sedan']=["-- Select --",'awd','rwd'];
+data['sedan']=["-- Select --",'automatic','manual'];
 data['hatchback']=["-- Select --",'cloth','leather'];
 
 // Truck
