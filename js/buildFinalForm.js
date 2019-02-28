@@ -7,13 +7,8 @@ function buildFinalForm(){
     // Form
     var finalForm = document.createElement('form'); // create form
         finalForm.setAttribute('method','POST');    // give form method POST
-        finalForm.setAttribute('id','myFinalForm'); // Give an ID 
-
-
-    // Form Header
-    var formHeader = document.createElement('h2');
-        formHeader.appendChild(document.createTextNode('Fill out the form to get your vehicle!'));
-
+        finalForm.setAttribute('id','myFinalForm'); // Give an ID  - to append items
+        
 
     // Text/labels next to the fields
     var fNameText = document.createTextNode('First Name ');
@@ -21,6 +16,9 @@ function buildFinalForm(){
     var emailText = document.createTextNode('Email ');
 
 
+    // Form Header
+    var formHeader = document.createElement('h2');
+        formHeader.appendChild(document.createTextNode('Fill out the form to get your vehicle!'));
 
     // First Name Input
     var inputFName = document.createElement('input');
@@ -45,8 +43,6 @@ function buildFinalForm(){
         submit.setAttribute('type','submit');
         submit.setAttribute('value','submit');
         submit.setAttribute('id','submitBtn');
-
-
 
 
     /**
@@ -88,7 +84,10 @@ function buildFinalForm(){
 }
 
 
+
+
 /**
+ * formUpdateCheck
  * DHTML to change form input background to green onchange based on the input
  */
 function formUpdateCheck(ele){

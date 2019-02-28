@@ -8,14 +8,17 @@ var choices = []; // global array to hold dom choices
 
 
 function buildIt(dom){
-    console.log("DOM AT START: " + dom);
-
+    console.log("At the start: "  + dom);
+    console.log("Value at the start: "  + dom.value);
 
     var hold;   // Hold used to hold dom
-    var holdQ;  // Quetion hold that does same as hold, but for Questions data
+    var holdQ;  // Question hold that does same as hold, but for Questions data
 
-    // put the selected choice into array - holds the actual dom element
-    choices.push(dom);
+
+    // If user chose the "-- Select --" option
+    if(dom.value != "-- Select --"){
+        choices.push(dom);
+    }
 
 
     // First check for outdated browsers
@@ -30,13 +33,10 @@ function buildIt(dom){
         }else{
             hold = data[dom.value];     // Use the value, not the DOM obj for data
             holdQ = qData[dom.value];   // Use the value, not the DOM obj to get the question data
+
+            console.log(data[dom.value]);
         }
 
-
-        // Check if user chose the '-- Select --' option
-        if(dom.value == "-- Select --"){
-            choices.pop(); // Remove option from being tracked
-        }
 
 
         // Check if there aren't any items/data
@@ -47,12 +47,12 @@ function buildIt(dom){
             // Div to hold the final display items
             var contentDiv = document.createElement('div');
             contentDiv.setAttribute("id","contentDiv");
-            $('finalDisplay').appendChild(contentDiv);
 
             // Header
             var finalDispHeader = document.createElement('h1');
+            finalDispHeader.setAttribute("id","underline");
             finalDispHeader.appendChild(document.createTextNode("Your selections:"));
-            $('contentDiv').appendChild(finalDispHeader);
+            contentDiv.appendChild(finalDispHeader);
 
 
             // Display choices - Place in displayDiv
@@ -60,8 +60,13 @@ function buildIt(dom){
             for(var i = 1, len = choices.length; i < len; i++){
                 var selectedChoices = document.createElement('p');
                 selectedChoices.appendChild(document.createTextNode(choices[i].value));
-                $('contentDiv').appendChild(selectedChoices);
+                contentDiv.appendChild(selectedChoices);
             }
+
+
+            
+            // lastly APPEND the finalDisplay div to the dom
+            $('finalDisplay').appendChild(contentDiv);
 
 
             buildFinalForm(); // builds the final form for gathering user information
@@ -77,7 +82,6 @@ function buildIt(dom){
                 // Checks to see if that menu is the last, if not remove all others
                 while(dom != dom.parentNode.lastChild){
                     dom.parentNode.removeChild(dom.parentNode.lastChild);  
-
 
                     // Cycle through choices array
                     // Find the index and value in the array that equals the selected dom
@@ -100,6 +104,7 @@ function buildIt(dom){
             }
 
 
+
             // Container div to hold question and menu
             var selectMenuDIV = document.createElement('div');
             selectMenuDIV.setAttribute('id','menuDIV');
@@ -119,7 +124,7 @@ function buildIt(dom){
                 menu.setAttribute('onchange','buildIt(this);');
             }
             $('menuDIV').appendChild(menu);
-
+            
 
             // Loop that makes options, loads option data, and puts it in menu
             for(var i = 0, len = hold.length; i < len; i++){
@@ -158,3 +163,5 @@ function selectionsFormCheck(){
         $('contentDiv').parentNode.removeChild($('contentDiv').parentNode.lastChild);
     }
 }
+
+

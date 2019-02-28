@@ -24,11 +24,9 @@ h3{
     margin-bottom: .2em;
 }
 
-/** Header title */
-
 
 /** Title at top of page */
-#title{
+.title{
     background-color: #EF4648; /* Blue: #3291D3 */
     color: white;
     padding: 1.25em;
@@ -82,20 +80,10 @@ form{
     border-radius: 1em;
     background-color: #EBE9E9;
 }
-
+/** Input text boxes for the final form */
 form input{
     margin-bottom: 1em;
     display: block;
-}
-
-#submitBtn{
-    font-size: 1rem;
-    padding: .25em;
-    margin-top: 1.3em;
-    transition-duration: 0.4s;
-}
-#submitBtn:hover{
-    cursor: pointer;
 }
 
 /* H2 header text in final form */
@@ -103,6 +91,26 @@ form h2{
     padding-bottom: 1em;
 }
 
+/* Submit Btn */
+#submitBtn{
+    font-size: 1rem;
+    padding: .25em;
+    margin-top: 1.3em;
+    transition-duration: 0.4s;
+}
+/* Submit Btn hover effect */
+#submitBtn:hover{
+    cursor: pointer;
+}
+
+
+
+
+
+/* Underline style for the 'Your selections' */
+#underline{
+    text-decoration: underline;
+}
 
 
 
@@ -111,6 +119,11 @@ form h2{
     from {opacity: 0;}
     to {opacity: 1;}
 }
+
+
+
+
+
 
 
 /**
