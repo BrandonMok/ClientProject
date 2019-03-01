@@ -6,7 +6,6 @@
 
 var choices = []; // global array to hold dom choices
 
-
 function buildIt(dom){
     console.log("At the start: "  + dom);
     console.log("Value at the start: "  + dom.value);
@@ -53,12 +52,77 @@ function buildIt(dom){
             contentDiv.appendChild(finalDispHeader);
 
 
+            
+            var choicesSTR;
+
+
             // Display choices - Place in displayDiv
             // NOTE: i is set to 1 initially to skip the 'init' from showing
             for(var i = 1, len = choices.length; i < len; i++){
                 var selectedChoices = document.createElement('p');
-                selectedChoices.appendChild(document.createTextNode(choices[i].value));
-                contentDiv.appendChild(selectedChoices);
+                //selectedChoices.appendChild(document.createTextNode(choices[i].value));
+
+
+                switch(choices[i].value){
+                    case "car":
+                    case "truck":
+                    case "suv":
+                        choicesSTR = "You selected a " + choices[i].value;
+                        break;
+                    case "sedan":
+                    case "hatchback":
+                        choicesSTR = "With a " + choices[i].value + " model";
+                        break;
+                    case "automatic":
+                    case "manual":
+                        choicesSTR = "With an " + choices[i].value + " transmission";
+                        break;
+                    case "cloth":
+                    case "leather":
+                        choicesSTR = "With " + choices[i].value + " seats";
+                        break; 
+                    case "van":
+                    case "pickup":
+                        choicesSTR = "That is a " +  choices[i].value;
+                        break;
+                    case "mini":
+                    case "camper":
+                    case "transit":
+                        choicesSTR = "With a make of " +  choices[i].value;
+                        break;       
+                    case "gas":
+                    case "diesal":
+                        choicesSTR = "Takes " + choices[i].value + " as fuel";
+                        break;
+                    case "2 seats":
+                    case "4 seats":
+                        choicesSTR = "Contains " + choices[i].value + " seats";
+                        break;
+                    case "large":
+                    case "medium":
+                    case "small":
+                        choicesSTR = "With " + choices[i].value + " sized mirrors";
+                        break;
+                    case "affordable":
+                    case "luxury":
+                        choicesSTR = "Within the " + choices[i].value + " price area";
+                        break; 
+                    case "lane assist":
+                    case "back-up camera":
+                        choicesSTR = "Contains " + choices[i].value + " as an extra feature";
+                        break; 
+                    case "wood":
+                    case "carbon fiber":
+                        choicesSTR = "With " + choices[i].value + " as a trim";
+                        break; 
+                    case "head-up display":
+                    case "touchpad":
+                        choicesSTR = "And " + choices[i].value + " as extra features";
+                        break; 
+                }
+
+                selectedChoices.appendChild(document.createTextNode(choicesSTR));
+                contentDiv.appendChild(selectedChoices); // display user selected choices
             }
 
 
@@ -110,7 +174,8 @@ function buildIt(dom){
 
             // Show Question first
             var question = document.createElement('h3');
-            question.appendChild(document.createTextNode((holdQ[0])));
+            var questionText = document.createTextNode((holdQ[0]));
+            question.appendChild(questionText);
             $('menuDIV').appendChild(question);
 
 
