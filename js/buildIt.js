@@ -52,17 +52,14 @@ function buildIt(dom){
             contentDiv.appendChild(finalDispHeader);
 
 
-            
-            var choicesSTR;
-
 
             // Display choices - Place in displayDiv
             // NOTE: i is set to 1 initially to skip the 'init' from showing
             for(var i = 1, len = choices.length; i < len; i++){
+                var choicesSTR; // variable to hold the sentences
                 var selectedChoices = document.createElement('p');
-                //selectedChoices.appendChild(document.createTextNode(choices[i].value));
 
-
+                // Switch to display more text along the selections
                 switch(choices[i].value){
                     case "car":
                     case "truck":
@@ -121,7 +118,8 @@ function buildIt(dom){
                         break; 
                 }
 
-                selectedChoices.appendChild(document.createTextNode(choicesSTR));
+                
+                selectedChoices.appendChild(document.createTextNode(choicesSTR));   // append choicesSTR to the p tag
                 contentDiv.appendChild(selectedChoices); // display user selected choices
             }
 
@@ -174,8 +172,7 @@ function buildIt(dom){
 
             // Show Question first
             var question = document.createElement('h3');
-            var questionText = document.createTextNode((holdQ[0]));
-            question.appendChild(questionText);
+            question.appendChild(document.createTextNode(holdQ[0]));
             $('menuDIV').appendChild(question);
 
 
