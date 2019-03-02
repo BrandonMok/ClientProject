@@ -1,6 +1,7 @@
 /**
 * Brandon Mok
 * Form build function for end of selections
+* Form that gathers user info (First & last name, email)
 */
 
 function buildFinalForm(){
@@ -65,6 +66,7 @@ function buildFinalForm(){
 
     /**
      * Showing forms & appending options
+     * Utilizes the id function like shown in class
      */
     $('forms').appendChild(finalForm);  
     $('myFinalForm').appendChild(formHeader);

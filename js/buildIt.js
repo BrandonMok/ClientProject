@@ -19,12 +19,16 @@ function buildIt(dom){
     if(dom.value != "-- Select --"){
         choices.push(dom);
     }
+    else{
+        
+    }
 
 
     // First check for outdated browsers
     if(!document.getElementById){
-       // window.location = "http://outdatedbrowser.com";
-       window.location = "https://www.mozilla.org/en-US/firefox/new/";
+        // Let user know that their browser is outdated
+        alert("Outdated browser detected, please download an updated version.");
+        window.location = "https://www.mozilla.org/en-US/firefox/new/"; // redirect to Mozilla's download page
     }else{
 
         // Check for the initial 'init' - first part ran only once
@@ -166,7 +170,7 @@ function buildIt(dom){
             // Container div to hold question and menu
             var selectMenuDIV = document.createElement('div');
             selectMenuDIV.style.opacity = 0;    // set opacity 
-            fadeEffect(selectMenuDIV);
+            fadeEffect(selectMenuDIV);  // call the fade effect
 
 
             // Show Question first
@@ -177,7 +181,7 @@ function buildIt(dom){
 
             // Menu creation
             var menu = document.createElement('select');
-            if(ieSeven){
+            if(ieSeven){    // forking for IE7
                 menu.attachEvent('onchange', function(){buildIt(this);});   
             }else{
                 menu.setAttribute('onchange','buildIt(this);');
@@ -195,6 +199,7 @@ function buildIt(dom){
             }
 
 
+            // Finally append the entire form into the dom
             $('forms').appendChild(selectMenuDIV);  // append the div to the dom
         }      
     }
@@ -233,12 +238,12 @@ function selectionsFormCheck(){
  * Opacity can only go up to a value of 1 [0,1]
  */
 function fadeEffect(dom){
-    // Store the number value of the dom
+    // Store the number value of the dom's opacity
+    // Needs to be a float to have extra decimal places (can't be an int because only either 0 or 1)
     var domOpacity = parseFloat(dom.style.opacity);
 
     // if less than 1
     if(domOpacity < 1.0){
-        //
         dom.style.opacity = domOpacity + 0.25;  // increment to the opacity
         setTimeout(function(){fadeEffect(dom);} , 200); // keep calling the function
     }

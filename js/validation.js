@@ -4,6 +4,7 @@
 */
 
 function validation(){
+
     // Check for empty fields
     if($('fName').value == "" || $('lName').value == "" || $('email').value == ""){
         $('fName').style.backgroundColor = "#EF4648";
@@ -16,6 +17,6 @@ function validation(){
     // In validation, bc ONLY want valid data to be stored
     storeLocalInfo();
 
-
-    return true;
+    alert("Your vehicle order is sent to the factory!");
+    return true;    // default 
 }
