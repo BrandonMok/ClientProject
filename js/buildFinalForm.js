@@ -9,6 +9,8 @@ function buildFinalForm(){
     var finalForm = document.createElement('form'); // create form
         finalForm.setAttribute('method','POST');    // give form method POST
         finalForm.setAttribute('id','myFinalForm'); // Give an ID  - to append items
+        finalForm.style.opacity = 0;    // apply the fading effect
+        fadeInEffect(finalForm);          //apply the fading effect
         
 
     // Text/labels next to the fields

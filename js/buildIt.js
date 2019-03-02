@@ -9,20 +9,15 @@ var choices = []; // global array to hold dom choices
 function buildIt(dom){
     console.log("At the start: "  + dom);
     console.log("Value at the start: "  + dom.value);
-    console.log(dom);
 
     var hold;   // Hold used to hold dom
     var holdQ;  // Question hold that does same as hold, but for Questions data
 
-
     // If user chose the "-- Select --" option
     if(dom.value != "-- Select --"){
-        choices.push(dom);
+        choices.push(dom);  // only want the non "-- Select --" option
     }
-    else{
-        
-    }
-
+    
 
     // First check for outdated browsers
     if(!document.getElementById){
@@ -49,13 +44,15 @@ function buildIt(dom){
 
             // Div to hold the final display items
             var contentDiv = document.createElement('div');
-            contentDiv.setAttribute("id","contentDiv");
+                contentDiv.setAttribute("id","contentDiv");
+                contentDiv.style.opacity = 0;   // apply the fade effect
+                fadeInEffect(contentDiv);         // call the function to fade
 
             // Header
             var finalDispHeader = document.createElement('h1');
-            finalDispHeader.setAttribute("id","underline");
-            finalDispHeader.appendChild(document.createTextNode("Your selections:"));
-            contentDiv.appendChild(finalDispHeader);
+                finalDispHeader.setAttribute("id","underline");
+                finalDispHeader.appendChild(document.createTextNode("Your selections:"));
+                contentDiv.appendChild(finalDispHeader);
 
 
 
@@ -147,7 +144,6 @@ function buildIt(dom){
                 while(dom != dom.parentNode.lastChild){
                     dom.parentNode.removeChild(dom.parentNode.lastChild);  
 
-                    // Cycle through choices array
                     // Find the index and value in the array that equals the selected dom
                     // if the value at the index equals the dom, then while loop to delete the remainder
                     for(var i = 0, len = choices.length-1; i < len; i++){
@@ -169,35 +165,35 @@ function buildIt(dom){
 
             // Container div to hold question and menu
             var selectMenuDIV = document.createElement('div');
-                selectMenuDIV.setAttribute('id','formDiv')
-                selectMenuDIV.style.opacity = 0;    // set opacity 
-                fadeEffect(selectMenuDIV);  // call the fade effect
+                selectMenuDIV.setAttribute('id','formDiv')  
                 $('forms').appendChild(selectMenuDIV);  // append the div to the dom
 
 
             // Show Question first
             var question = document.createElement('h3');
-                question.appendChild(document.createTextNode(holdQ[0]));
-                $('formDiv').appendChild(question);
+                question.appendChild(document.createTextNode(holdQ[0]));    // give h3 the value of question
+                $('formDiv').appendChild(question); // append question h3 to the dom
 
 
             // Menu creation
             var menu = document.createElement('select');
+            menu.style.opacity = 0; // preseting the fade affect
+            fadeInEffect(menu);     // call fade affect
             if(ieSeven){    // forking for IE7
                 menu.attachEvent('onchange', function(){buildIt(this);});   
             }else{
                 menu.setAttribute('onchange','buildIt(this);');
             }
-            $('formDiv').appendChild(menu);
+            $('formDiv').appendChild(menu); // append the menu to the dom
             
             
 
             // Loop that makes options, loads option data, and puts it in menu
             for(var i = 0, len = hold.length; i < len; i++){
-                var options = document.createElement('option');
-                options.setAttribute('name', hold[i]);
-                options.setAttribute('value', hold[i]);
-                options.appendChild(document.createTextNode(hold[i]));
+                var options = document.createElement('option');     // create options
+                options.setAttribute('name', hold[i]);              // Give values to options
+                options.setAttribute('value', hold[i]);             // Give values to options
+                options.appendChild(document.createTextNode(hold[i]));  // Show text value of option
                 menu.appendChild(options);  // append options to the menu
             }
         }      
@@ -236,7 +232,7 @@ function selectionsFormCheck(){
  * Opacity is originally set to 0
  * Opacity can only go up to a value of 1 [0,1]
  */
-function fadeEffect(dom){
+function fadeInEffect(dom){
     // Store the number value of the dom's opacity
     // Needs to be a float to have extra decimal places (can't be an int because only either 0 or 1)
     var domOpacity = parseFloat(dom.style.opacity);
@@ -244,8 +240,9 @@ function fadeEffect(dom){
     // if less than 1
     if(domOpacity < 1.0){
         dom.style.opacity = domOpacity + 0.25;  // increment to the opacity
-        setTimeout(function(){fadeEffect(dom);} , 200); // keep calling the function
+        setTimeout(function(){fadeInEffect(dom);} , 200); // keep calling the function
     }
 }
+
 
 

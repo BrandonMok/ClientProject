@@ -19,6 +19,11 @@ p{
     font-size: 1.3rem; 
 }
 
+/* Only h1 is on the final display "Your selections" */
+h1{
+    padding-bottom: .5em;
+}
+
 /* Question h3 tags */
 h3{
     margin-bottom: .2em;
