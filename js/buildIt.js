@@ -165,13 +165,14 @@ function buildIt(dom){
 
             // Container div to hold question and menu
             var selectMenuDIV = document.createElement('div');
-            selectMenuDIV.setAttribute('id','menuDIV');
-            $('forms').appendChild(selectMenuDIV);  // append the div to the dom
+            selectMenuDIV.style.opacity = 0;    // set opacity 
+            fadeEffect(selectMenuDIV);
+
 
             // Show Question first
             var question = document.createElement('h3');
             question.appendChild(document.createTextNode(holdQ[0]));
-            $('menuDIV').appendChild(question);
+            selectMenuDIV.appendChild(question);
 
 
             // Menu creation
@@ -181,8 +182,7 @@ function buildIt(dom){
             }else{
                 menu.setAttribute('onchange','buildIt(this);');
             }
-            $('menuDIV').appendChild(menu);
-            
+            selectMenuDIV.appendChild(menu);            
             
 
             // Loop that makes options, loads option data, and puts it in menu
@@ -193,6 +193,9 @@ function buildIt(dom){
                 options.appendChild(document.createTextNode(hold[i]));
                 menu.appendChild(options);  // append options to the menu
             }
+
+
+            $('forms').appendChild(selectMenuDIV);  // append the div to the dom
         }      
     }
 }
@@ -220,6 +223,24 @@ function selectionsFormCheck(){
     }
     if($('contentDiv')){
         $('contentDiv').parentNode.removeChild($('contentDiv').parentNode.lastChild);
+    }
+}
+
+
+/**
+ * DHTML effect to fade the menus into the dom 
+ * Opacity is originally set to 0
+ * Opacity can only go up to a value of 1 [0,1]
+ */
+function fadeEffect(dom){
+    // Store the number value of the dom
+    var domOpacity = parseFloat(dom.style.opacity);
+
+    // if less than 1
+    if(domOpacity < 1.0){
+        //
+        dom.style.opacity = domOpacity + 0.25;  // increment to the opacity
+        setTimeout(function(){fadeEffect(dom);} , 200); // keep calling the function
     }
 }
 
