@@ -17,6 +17,7 @@ function validation(){
     // In validation, bc ONLY want valid data to be stored
     storeLocalInfo();
 
-    alert("Your vehicle order is sent to the factory!");
+    
+    alert("Your vehicle order is sent to the factory!"); // alert for feedback
     return true;    // default 
 }

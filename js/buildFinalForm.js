@@ -17,7 +17,7 @@ function buildFinalForm(){
     var emailText = document.createTextNode('Email ');
 
 
-    // Form Header
+    // Form Header Text 
     var formHeader = document.createElement('h2');
         formHeader.appendChild(document.createTextNode('Fill out the form to get your vehicle!'));
 

@@ -169,14 +169,16 @@ function buildIt(dom){
 
             // Container div to hold question and menu
             var selectMenuDIV = document.createElement('div');
-            selectMenuDIV.style.opacity = 0;    // set opacity 
-            fadeEffect(selectMenuDIV);  // call the fade effect
+                selectMenuDIV.setAttribute('id','formDiv')
+                selectMenuDIV.style.opacity = 0;    // set opacity 
+                fadeEffect(selectMenuDIV);  // call the fade effect
+                $('forms').appendChild(selectMenuDIV);  // append the div to the dom
 
 
             // Show Question first
             var question = document.createElement('h3');
-            question.appendChild(document.createTextNode(holdQ[0]));
-            selectMenuDIV.appendChild(question);
+                question.appendChild(document.createTextNode(holdQ[0]));
+                $('formDiv').appendChild(question);
 
 
             // Menu creation
@@ -186,7 +188,8 @@ function buildIt(dom){
             }else{
                 menu.setAttribute('onchange','buildIt(this);');
             }
-            selectMenuDIV.appendChild(menu);            
+            $('formDiv').appendChild(menu);
+            
             
 
             // Loop that makes options, loads option data, and puts it in menu
@@ -197,10 +200,6 @@ function buildIt(dom){
                 options.appendChild(document.createTextNode(hold[i]));
                 menu.appendChild(options);  // append options to the menu
             }
-
-
-            // Finally append the entire form into the dom
-            $('forms').appendChild(selectMenuDIV);  // append the div to the dom
         }      
     }
 }
