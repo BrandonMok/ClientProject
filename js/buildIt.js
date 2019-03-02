@@ -9,6 +9,7 @@ var choices = []; // global array to hold dom choices
 function buildIt(dom){
     console.log("At the start: "  + dom);
     console.log("Value at the start: "  + dom.value);
+    console.log(dom);
 
     var hold;   // Hold used to hold dom
     var holdQ;  // Question hold that does same as hold, but for Questions data
@@ -22,7 +23,8 @@ function buildIt(dom){
 
     // First check for outdated browsers
     if(!document.getElementById){
-        window.location = "http://outdatedbrowser.com";
+       // window.location = "http://outdatedbrowser.com";
+       window.location = "https://www.mozilla.org/en-US/firefox/new/";
     }else{
 
         // Check for the initial 'init' - first part ran only once
@@ -72,7 +74,7 @@ function buildIt(dom){
                         break;
                     case "automatic":
                     case "manual":
-                        choicesSTR = "With an " + choices[i].value + " transmission";
+                        choicesSTR = "With a " + choices[i].value + " transmission";
                         break;
                     case "cloth":
                     case "leather":
@@ -127,7 +129,6 @@ function buildIt(dom){
             // lastly APPEND the finalDisplay div to the dom
             $('finalDisplay').appendChild(contentDiv);
 
-
             buildFinalForm(); // builds the final form for gathering user information
         }
         else{// Case there are available choices
@@ -156,19 +157,16 @@ function buildIt(dom){
                         }                        
                     }
                          
-
                     // removes form and selections made display if changed a choice
                     selectionsFormCheck();
                 }
             }
 
 
-
-
             // Container div to hold question and menu
             var selectMenuDIV = document.createElement('div');
             selectMenuDIV.setAttribute('id','menuDIV');
-            $('forms').appendChild(selectMenuDIV);
+            $('forms').appendChild(selectMenuDIV);  // append the div to the dom
 
             // Show Question first
             var question = document.createElement('h3');
@@ -184,6 +182,7 @@ function buildIt(dom){
                 menu.setAttribute('onchange','buildIt(this);');
             }
             $('menuDIV').appendChild(menu);
+            
             
 
             // Loop that makes options, loads option data, and puts it in menu
