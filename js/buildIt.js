@@ -7,8 +7,9 @@
 var choices = []; // global array to hold dom choices
 
 function buildIt(dom){
-    console.log("At the start: "  + dom);
-    console.log("Value at the start: "  + dom.value);
+    // console.log("At the start: "  + dom);
+    // console.log("Value at the start: "  + dom.value);
+    // console.log(dom);
 
     var hold;   // Hold used to hold dom
     var holdQ;  // Question hold that does same as hold, but for Questions data
@@ -182,7 +183,7 @@ function buildIt(dom){
             if(ieSeven){    // forking for IE7
                 menu.attachEvent('onchange', function(){buildIt(this);});   
             }else{
-                menu.setAttribute('onchange','buildIt(this);');
+                menu.setAttribute('onchange','buildIt(this);'); 
             }
             $('formDiv').appendChild(menu); // append the menu to the dom
             
