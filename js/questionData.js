@@ -26,6 +26,7 @@ qData['suv']=["Select a price range"];
 qData['affordable']=['Extra features'];
 qData['luxury']=['Select a trim material'];
 qData['carbon fiber']=['Select more features'];
+qData['wood']=["Select an in-cabin feature"];
 
 
 

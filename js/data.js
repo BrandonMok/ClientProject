@@ -25,3 +25,4 @@ data['suv']=["-- Select --",'affordable','luxury'];
 data['affordable']=["-- Select --",'lane assist','back-up camera'];
 data['luxury']=["-- Select --",'wood','carbon fiber'];
 data['carbon fiber']=["-- Select --",'head-up display','touchpad'];
+data["wood"]=["Apple Car play","bluetooth"];
