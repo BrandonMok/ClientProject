@@ -95,8 +95,8 @@ function buildIt(dom){
                     case "diesal":
                         choicesSTR = "Takes " + choices[i].value + " as fuel";
                         break;
-                    case "2 seats":
-                    case "4 seats":
+                    case "2":
+                    case "4":
                         choicesSTR = "Contains " + choices[i].value + " seats";
                         break;
                     case "large":
