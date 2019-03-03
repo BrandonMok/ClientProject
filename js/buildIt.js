@@ -120,6 +120,10 @@ function buildIt(dom){
                     case "touchpad":
                         choicesSTR = "And " + choices[i].value + " as extra features";
                         break; 
+                    case "Apple Car play":
+                    case "bluetooth":
+                        choicesSTR = "And " + choices[i].value + " for in-cabin features";
+                        break; 
                 }
 
                 
