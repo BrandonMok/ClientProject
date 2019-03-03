@@ -7,9 +7,9 @@
 var choices = []; // global array to hold dom choices
 
 function buildIt(dom){
-    // console.log("At the start: "  + dom);
-    // console.log("Value at the start: "  + dom.value);
-    // console.log(dom);
+    console.log(dom);
+    console.log("TYPE: " + typeof dom);
+    console.log("Value at the start: "  + dom.value);
 
     var hold;   // Hold used to hold dom
     var holdQ;  // Question hold that does same as hold, but for Questions data
@@ -181,13 +181,12 @@ function buildIt(dom){
             menu.style.opacity = 0; // preseting the fade affect
             fadeInEffect(menu);     // call fade affect
             if(ieSeven){    // forking for IE7
-                menu.attachEvent('onchange', function(){buildIt(this);});   
+                menu.attachEvent('onchange', function(){ buildIt(this); });   
             }else{
                 menu.setAttribute('onchange','buildIt(this);'); 
             }
             $('formDiv').appendChild(menu); // append the menu to the dom
-            
-            
+
 
             // Loop that makes options, loads option data, and puts it in menu
             for(var i = 0, len = hold.length; i < len; i++){
@@ -205,6 +204,7 @@ function buildIt(dom){
 
 /**
  * Shortcut for getting elements by id
+ * Was shown in class - makes code cleaner
  */
 function $(id){
     return document.getElementById(id);
