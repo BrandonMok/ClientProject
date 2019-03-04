@@ -7,26 +7,21 @@
  /**
   * storeLocalInfo()
   * Stores input information into LocalStorage & cookies
+  * Fields will be filled in as the function isn't called until after validation
   */
 function storeLocalInfo(){
     // IE7 uses cookies
     // Check for IE7 first
     if(ieSeven){
         // Use cookies
-        if(GetCookie('firstName') == null && GetCookie('lastName') == null && GetCookie('email') == null){
-            // Setting cookies
-            SetCookie('firstName', $("fName").value);
-            SetCookie('lastName', $('lName').value);
-            SetCookie('email', $('email').value);
-        }
+        SetCookie('firstName', $("fName").value);
+        SetCookie('lastName', $('lName').value);
+        SetCookie('email', $('email').value);
     }
     else if (window.localStorage){  // all other browsers
-        // If form is filled out - store info
-        if( $("fName").value != null && $("lName").value != null  && $("email").value != null ){
-            localStorage.setItem("firstName", $("fName").value);
-            localStorage.setItem("lastName", $("lName").value);
-            localStorage.setItem("email", $("email").value);
-        }
+        localStorage.setItem("firstName", $("fName").value);
+        localStorage.setItem("lastName", $("lName").value);
+        localStorage.setItem("email", $("email").value);
     }
 }
 
@@ -39,36 +34,44 @@ function storeLocalInfo(){
 function retrieveLocalInfo(){
     // Check for IEseven
     if(ieSeven){
-        // If there are cookies!
-        if(GetCookie('firstName') !== null || GetCookie('lastName') !== null || GetCookie('email') !== null){
-            // Setting cookies - Value pair
-            $("fName").setAttribute("value", GetCookie('firstName'));
-            $("lName").setAttribute("value", GetCookie('lastName'));
-            $("email").setAttribute("value", GetCookie('email'));
+        // Store cookie values into variables
+        var firstName = GetCookie('firstName');
+        var lastName = GetCookie('lastName');
+        var email = GetCookie('email');
 
-            // Use DTHML to apply green filled in background
-            formUpdateCheck($("fName"));
-            formUpdateCheck($("lName"));
-            formUpdateCheck($("email"));
+        // First check if the values are not null - which implies they do exist
+        // If they exist, then set the values to the respective input fields
+        if(firstName !== null){
+            $("fName").setAttribute("value", GetCookie('firstName'));
         }
+        if(lastName !== null){
+            $("lName").setAttribute("value", GetCookie('lastName'));
+        }
+        if(email !== null){
+            $("email").setAttribute("value", GetCookie('email'));
+        }
+
+        // Use DTHML to apply green filled in background
+        formUpdateCheck($("fName"));
+        formUpdateCheck($("lName"));
+        formUpdateCheck($("email"));
     }
     else{   // LocalStorage way
-        if($("fName").value == "" || $("lName").value == ""  ||  $("email").value == ""){
-            // Checks if Local Storage works in the browser
-            if(window.localStorage){
-                // Check if there's anything in the local storage first
-                if(window.localStorage.length > 0){
-                    // Case when there are pairs in the LocalStorage
-                    // Sets preset recorded information
-                    $("fName").setAttribute("value", localStorage.getItem("firstName"));
-                    $("lName").setAttribute("value", localStorage.getItem("lastName"));
-                    $("email").setAttribute("value", localStorage.getItem("email"));
-    
-                    // Use DTHML to apply green filled in background
-                    formUpdateCheck($("fName"));
-                    formUpdateCheck($("lName"));
-                    formUpdateCheck($("email"));
-                }
+
+        // Checks if Local Storage works in the browser
+        if(window.localStorage){
+            // Check if there's anything in the local storage first
+            if(window.localStorage.length > 0){
+                // Case when there are pairs in the LocalStorage
+                // Sets preset recorded information
+                $("fName").setAttribute("value", localStorage.getItem("firstName"));
+                $("lName").setAttribute("value", localStorage.getItem("lastName"));
+                $("email").setAttribute("value", localStorage.getItem("email"));
+
+                // Use DTHML to apply green filled in background
+                formUpdateCheck($("fName"));
+                formUpdateCheck($("lName"));
+                formUpdateCheck($("email"));
             }
         }
     }
